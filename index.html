@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan the future of Tekong!</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Mapbox GL JS CSS -->
+    <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v3.8.0/mapbox-gl.css" rel="stylesheet">
+    
+    <!-- Add the Barlow font from Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">    
+    
+    <!-- Custom stylesheet -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+
+            <!-- Description Panel -->
+            <div class="col-3 content-panel" id="description-panel">
+                <!-- Initial content or default view -->
+                <h3>Come plan the future of<br><span style="font-size: 1.5em;">Tekong New Town!</span></h3>
+                <div class="image-container">
+                    <img src="./assets/images/hdb3.png" alt="HDB Image" id="hdb-image" class="img-fluid">
+                </div>
+                <p>Today, the whole of <span class="semibold">Pulau Tekong (Tekong Island)</span> is used for our defence needs. 
+                    However, that is set to change with the ongoing land reclamation works undertaken by the 
+                    Housing and Development Board with the Ministry of Defence. Indeed, The latest <a href="https://www.ura.gov.sg/Corporate/Planning/Master-Plan" target="_blank" style="color: #838077;">Master Plan 2019</a> 
+                    reserves most of Tekong's land for future (non-military) development.
+                </p>
+                <p>
+                    What do you imagine a future Tekong New Town to be like? 
+                    Step into the shoes of a planner and colour the future of Tekong below!
+                </p>
+
+                <!-- Buttons Section -->
+                <div class="button-container">
+                    <button class="btn btn-secondary d-block mb-2 w-100" id="creative-mode-btn">Enter creative mode</button>
+                    <button class="btn btn-secondary d-block mb-2 w-100" id="explore-ideas-btn">Explore submitted ideas</button>
+                    <button class="btn btn-secondary w-100" id="history-btn">See the history of Tekong</button>
+                </div>
+
+                <!-- Toggle Button to Hide/Show the Panel -->
+                
+            </div>
+
+            <!-- Map Panel -->
+            <div class="col-7" id="map">
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Mapbox GL JS -->
+    <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v3.8.0/mapbox-gl.js"></script>
+
+    <!-- GSAP JS -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+
+    <!-- Scripts for different sections -->
+    <script src="js/main.js"></script>
+    <script src="js/map.js"></script>
+</body>
+</html>

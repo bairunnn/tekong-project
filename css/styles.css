@@ -1,0 +1,91 @@
+/* 
+Contents:
+
+Main interface CSS
+- body
+- content-panel
+- #map
+
+Description bar CSS
+- image-container (for HDB logo)
+- button:hover (for hover effect)
+- show / hide state
+
+Font options CSS
+- .semibold (for semibold text)
+
+*/
+
+/* Main interface */
+
+html, body, #map {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Barlow, sans-serif;
+}
+
+.content-panel {
+    max-height: 100vh;
+    overflow-y: auto;
+    width: 30%;
+    scroll-behavior: smooth;
+    background-color: #fefcf6;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    padding-left: 2rem; /* Custom padding for the left */
+    padding-right: 2rem; /* Custom padding for the right */
+}
+
+#map {
+    height: 100vh;
+    width: 70%;
+}
+
+/* Description bar */
+
+.image-container {
+    width: 10%; /* Set the width to 15% of the parent */
+    margin-top: 0.7rem; /* Adds spacing above the image container */
+    margin-bottom: 0.7rem; /* Adds spacing below the image container */
+    text-align: center; /* Centers the image horizontally */
+    transition: transform 0.3s ease; /* Smooth transition for the hover effect */
+}
+
+.image-container img {
+    max-width: 100%; /* Ensure the image fits within the container */
+    height: auto; /* Maintain the aspect ratio */
+}
+
+.image-container:hover {
+    transform: scale(1.1); /* Enlarge the image to 110% of its original size */
+}
+
+/* Custom button styles */
+
+#creative-mode-btn {
+    background-color: #858379; /* Custom background for "Enter creative mode" */
+}
+
+#explore-ideas-btn,
+#history-btn {
+    background-color: #e6e4de; /* Custom background for the other two buttons */
+    color: black; /* Default text color should be black */
+    border: none; /* Remove border */
+}
+
+/* Hover effect */
+#creative-mode-btn:hover,
+#explore-ideas-btn:hover,
+#history-btn:hover {
+    background-color: #f4f2ec;
+    color: black;
+}
+
+
+
+/* Font options */
+
+.semibold {
+    font-weight: 600; /* Semibold weight */
+}
