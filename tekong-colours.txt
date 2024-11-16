@@ -1,0 +1,12 @@
+#215297  Commercial (offices & retail)  C
+#f4f2c1  Education                    E
+#f6bb81  Housing                      H
+#c8a5cf  Light industry               L
+#516702  Military (special uses)      M
+#abb20c  Open space (forest)          O
+#1ea33a  Park                         P
+#a3d49d  Sports                       S
+#bedef3  Waterbody                    W
+
+
+C E H L M O P S W
