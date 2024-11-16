@@ -6,7 +6,6 @@ An overview of its structure:
 - Clicking on the HDB image
 - Moving the mouse to rotate the HDB image
 - Show / hide the content panel
-- Tooltip for show / hide button
 
 */
 
@@ -114,5 +113,4 @@ toggleBtn.addEventListener('click', () => {
 
 /* ###################################################### */
 
-/* Tooltip for show / hide button */
 

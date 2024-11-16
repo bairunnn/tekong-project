@@ -23,6 +23,5 @@ function homeView() {
             <button class="btn btn-secondary w-100" id="history-btn">See the history of Tekong</button>
         </div>
     `;
-
     assignHomeViewListeners();
 }
