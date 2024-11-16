@@ -50,9 +50,9 @@ map.on('load', function() {
 const mapContainer = document.getElementById('map');
 
 // Set the custom cursor style for the Mapbox container
-mapContainer.style.cursor = "url('../assets/images/cursor_brush.png'), auto";
+mapContainer.style.cursor = "url('../assets/images/cursor_brush.png'), default";
 
 // Optional: Prevent Mapbox from changing the cursor on specific events
 map.on('mousemove', () => {
-    map.getCanvas().style.cursor = "url('../assets/images/cursor_brush.png'), auto";
+    map.getCanvas().style.cursor = "url('../assets/images/cursor_brush.png'), default";
 });
