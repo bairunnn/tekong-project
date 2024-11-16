@@ -76,8 +76,8 @@ function loadCreativeMode() {
 
         // Use GSAP to animate the rotation of the brush icon
         gsap.to("#creative-brush", {
-            rotation: angle / 5,
-            duration: 0.3,
+            rotation: angle / 4,
+            duration: 0.2,
             ease: "power1.out"
         });
     }
@@ -87,7 +87,8 @@ function loadCreativeMode() {
 
     // "Return to home" functionality
     document.getElementById('back-icon-section').addEventListener('click', () => {
-        window.location.href = '/'; // Adjust the home URL if needed
+        // Clear and load the default view
+        homeView();
     });
 
     brushIcon.addEventListener('click', () => {

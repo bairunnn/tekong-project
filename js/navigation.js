@@ -9,3 +9,16 @@ document.getElementById('creative-mode-btn').addEventListener('click', () => {
     // Run the function from creative.js to populate the description-panel with Creative Mode content
     loadCreativeMode();
 });
+
+function assignHomeViewListeners() {
+    // Event listener for the "creative-mode-btn"
+    document.getElementById('creative-mode-btn').addEventListener('click', () => {
+        let contentPanel = document.getElementById('description-panel');
+        contentPanel.innerHTML = ''; // Clear the current content
+        loadCreativeMode();          // Load the creative mode
+    });
+
+    // Event listeners for other buttons (if required)
+    // document.getElementById('explore-ideas-btn').addEventListener('click', () => { ... });
+    // document.getElementById('history-btn').addEventListener('click', () => { ... });
+}
