@@ -29,7 +29,7 @@ html, body, #map {
     margin: 0;
     padding: 0;
     font-family: Barlow, sans-serif;
-    cursor: url('../assets/images/brush.cur'), default;
+    cursor: url('../assets/images/palette/C.cur'), default;
 }
 
 .content-panel {

@@ -18,7 +18,7 @@ An overview of its structure:
 /* Clicking on the HDB image */
 
 document.getElementById('hdb-image').addEventListener('click', function() {
-    alert("This interactive web app is not affiliated with the Housing & Development Board, nor with the Government of Singapore.\nFor education only!!");
+    alert("This interactive web app is not affiliated with the Urban Redevelopment Authority, the Housing & Development Board, nor with the Government of Singapore.\nFor legal purposes, none of the information here reflects the planning intention of the Government. Please refer to the adopted Master Plan.\nFor education only!!\nbairun@upenn.edu");
 });
 
 /* ###################################################### */

@@ -29,6 +29,9 @@ function loadCreativeMode() {
         </div>
     `;
 
+    // Add event listener for the 'New map' button
+    document.getElementById("new-map-btn").addEventListener("click", renderNewMap);
+
     // // Add button functionalities
     // document.getElementById('new-map-btn').addEventListener('click', () => {
     //     alert('New map functionality goes here!');
