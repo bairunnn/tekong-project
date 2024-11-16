@@ -14,6 +14,10 @@ Description bar CSS
 Font options CSS
 - .semibold (for semibold text)
 
+Creative mode CSS
+- hover over return to home
+- default creative mode cursor
+
 */
 
 /* ###################################################### */
@@ -25,6 +29,7 @@ html, body, #map {
     margin: 0;
     padding: 0;
     font-family: Barlow, sans-serif;
+    cursor: url('../assets/images/cursor_brush.png'), default;
 }
 
 .content-panel {
@@ -68,12 +73,16 @@ html, body, #map {
 
 /* Custom button styles */
 
-#creative-mode-btn {
+#creative-mode-btn,
+#new-map-btn {
     background-color: #858379; /* Custom background for "Enter creative mode" */
+    border: none; /* Remove border */
 }
 
 #explore-ideas-btn,
-#history-btn {
+#history-btn,
+#retrieve-map-btn,
+#screenshot-btn {
     background-color: #e6e4de; /* Custom background for the other two buttons */
     color: black; /* Default text color should be black */
     border: none; /* Remove border */
@@ -82,7 +91,10 @@ html, body, #map {
 /* Hover effect */
 #creative-mode-btn:hover,
 #explore-ideas-btn:hover,
-#history-btn:hover {
+#history-btn:hover,
+#new-map-btn:hover,
+#retrieve-map-btn:hover,
+#screenshot-btn:hover {
     background-color: #f4f2ec;
     color: black;
 }
@@ -129,4 +141,14 @@ html, body, #map {
 
 .semibold {
     font-weight: 600; /* Semibold weight */
+}
+
+/* ###################################################### */
+
+/* Creative mode */
+
+/* Add opacity change on hover */
+#back-icon-section:hover {
+    opacity: 0.7;
+    transition: opacity 0.3s ease; /* Smooth transition effect */
 }
