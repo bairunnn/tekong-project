@@ -49,3 +49,39 @@ window.addEventListener("mousemove", handleMouseMove);
 
 // Show / hide the content panel
 
+// Select elements
+const contentPanel = document.getElementById('description-panel');
+const mapPanel = document.getElementById('map');
+const toggleBtn = document.getElementById('toggle-panel-btn');
+
+// Initial state
+let isPanelVisible = true;
+
+// Event listener for the toggle button
+toggleBtn.addEventListener('click', () => {
+    if (isPanelVisible) {
+        // Hide content panel
+        contentPanel.style.width = '0';
+        contentPanel.style.padding = '0'; // Remove padding for smooth collapse
+        mapPanel.style.width = '100%';
+
+        // Change the innerHTML of the toggle button
+        toggleBtn.innerHTML = `<i class="bi bi-chevron-right"></i><i class="bi bi-chevron-right"></i>`;
+    } else {
+        // Show content panel
+        contentPanel.style.width = '30%';
+        contentPanel.style.padding = '2rem'; // Restore padding
+        mapPanel.style.width = '70%';
+
+        // Change the innerHTML of the toggle button
+        toggleBtn.innerHTML = `<i class="bi bi-chevron-left"></i><i class="bi bi-chevron-left"></i>`;
+    }
+
+    // Resize the map after layout changes
+    setTimeout(() => {
+        map.resize(); // Adjust the Mapbox map to fit the updated #map panel
+    }, 300); // Delay to ensure the CSS transition completes
+
+    // Toggle panel visibility state
+    isPanelVisible = !isPanelVisible;
+});

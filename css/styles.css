@@ -82,6 +82,31 @@ html, body, #map {
     color: black;
 }
 
+/* Show / hide state */
+/* Floating button */
+#toggle-panel-btn {
+    position: absolute;
+    top: 50%; /* Center vertically */
+    left: 0; /* Align to the left edge of the map panel */
+    transform: translate(-50%, -50%); /* Adjust for proper centering */
+    background-color: #fefcf6; /* Button background */
+    color: rgb(0, 0, 0); /* Icon color */
+    border: none;
+    border-radius: 50%;
+    width: 2.5rem; /* Circle button size */
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000; /* Ensure it's above all other elements */
+    cursor: pointer;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for emphasis */
+}
+
+/* Hover effect for the button */
+#toggle-panel-btn:hover {
+    background-color: #e6e4de; /* Darker shade for hover effect */
+}
 
 
 /* Font options */
