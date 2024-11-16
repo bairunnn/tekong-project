@@ -2,10 +2,11 @@
 Welcome to main.js!
 An overview of its structure:
 
-Interactions on the main landing page
+1. Interactions on the main landing page
 - Clicking on the HDB image
 - Moving the mouse to rotate the HDB image
 - Show / hide the content panel
+- Tooltip for show / hide button
 
 */
 
@@ -13,9 +14,17 @@ Interactions on the main landing page
   1. Interactions on the main landing page
 */
 
+/* ###################################################### */
+
+/* Clicking on the HDB image */
+
 document.getElementById('hdb-image').addEventListener('click', function() {
     alert("This interactive web app is not affiliated with the Housing & Development Board, nor with the Government of Singapore.\nFor education only!!");
 });
+
+/* ###################################################### */
+
+/* Moving the mouse to rotate the HDB image */
 
 function handleMouseMove(event) {
     // Get the viewport dimensions
@@ -47,7 +56,9 @@ function handleMouseMove(event) {
 window.addEventListener("mousemove", handleMouseMove);
 
 
-// Show / hide the content panel
+/* ###################################################### */
+
+/* Show / hide the content panel */
 
 // Select elements
 const contentPanel = document.getElementById('description-panel');
@@ -56,6 +67,11 @@ const toggleBtn = document.getElementById('toggle-panel-btn');
 
 // Initial state
 let isPanelVisible = true;
+
+// Enable Bootstrap tooltips for the toggle button
+$(document).ready(function () {
+    $('#toggle-panel-btn').tooltip({ placement: 'right' }); // Initialize tooltip
+});
 
 // Event listener for the toggle button
 toggleBtn.addEventListener('click', () => {
@@ -67,6 +83,11 @@ toggleBtn.addEventListener('click', () => {
 
         // Change the innerHTML of the toggle button
         toggleBtn.innerHTML = `<i class="bi bi-chevron-right"></i><i class="bi bi-chevron-right"></i>`;
+
+        // Remove and reinitialize the tooltip after the button moves
+        $('#toggle-panel-btn').tooltip('dispose'); // Destroy the existing tooltip
+        $('#toggle-panel-btn').tooltip({ placement: 'right' });; // Reinitialize the tooltip
+
     } else {
         // Show content panel
         contentPanel.style.width = '30%';
@@ -75,6 +96,10 @@ toggleBtn.addEventListener('click', () => {
 
         // Change the innerHTML of the toggle button
         toggleBtn.innerHTML = `<i class="bi bi-chevron-left"></i><i class="bi bi-chevron-left"></i>`;
+
+        // Remove and reinitialize the tooltip after the button moves
+        $('#toggle-panel-btn').tooltip('dispose'); // Destroy the existing tooltip
+        $('#toggle-panel-btn').tooltip({ placement: 'right' });; // Reinitialize the tooltip
     }
 
     // Resize the map after layout changes
@@ -85,3 +110,9 @@ toggleBtn.addEventListener('click', () => {
     // Toggle panel visibility state
     isPanelVisible = !isPanelVisible;
 });
+
+
+/* ###################################################### */
+
+/* Tooltip for show / hide button */
+
