@@ -77,13 +77,13 @@ map.on('load', function() {
 
 });
 
-// Access the Mapbox map container
-const mapContainer = document.getElementById('map');
+// // Access the Mapbox map container
+// const mapContainer = document.getElementById('map');
 
-// Set the custom cursor style for the Mapbox container
-mapContainer.style.cursor = "url('../assets/images/cursor_brush.png'), default";
+// // Set the custom cursor style for the Mapbox container
+// mapContainer.style.cursor = "url('../assets/images/cursor_brush.cur'), default";
 
-// Optional: Prevent Mapbox from changing the cursor on specific events
-map.on('mousemove', () => {
-    map.getCanvas().style.cursor = "url('../assets/images/cursor_brush.png'), default";
-});
+// // Optional: Prevent Mapbox from changing the cursor on specific events
+// map.on('mousemove', () => {
+//     map.getCanvas().style.cursor = "url('../assets/images/cursor_brush.cur'), default";
+// });

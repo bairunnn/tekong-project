@@ -1,4 +1,5 @@
-// newmap.js
+let activeButton = null;  // Track the currently active button
+
 function renderNewMap() {
     // Create the color-palette container
     const colorPalette = document.createElement("div");
@@ -35,9 +36,32 @@ function renderNewMap() {
             button.style.color = "#fff"; // Default text color is white
         }
 
-        // Add an action for the button to change cursor
+        // Add an action for the button to change cursor and update active button color
         button.onclick = function() {
+            // If there is an active button, restore its original color
+            if (activeButton && activeButton !== button) {
+                activeButton.style.backgroundColor = zoningMap[activeButton.dataset.zone].color; // Restore original color
+            }
+
+            // Darken the current button
+            button.style.backgroundColor = darkenColor(zoningMap[zone].color, 20); // Darken by 20%
+
+            // Set the current button as active
+            activeButton = button;
+            activeButton.dataset.zone = zone; // Store the zone in a custom data attribute
+
+            // Change the cursor globally
             document.body.style.cursor = `url(${zoningMap[zone].cursor}), auto`; // Change the cursor
+
+            // Override cursor style for Mapbox container
+            const mapContainer = document.getElementById('map');
+            mapContainer.style.cursor = `url(${zoningMap[zone].cursor}), auto`;
+
+            // Update the cursor for the map on mousemove
+            map.on('mousemove', () => {
+                map.getCanvas().style.cursor = `url(${zoningMap[zone].cursor}), auto`;
+            });
+
             console.log(`Button for ${zoningMap[zone].name} clicked`);
         };
 
@@ -48,6 +72,20 @@ function renderNewMap() {
     // Append the color-palette to the map container
     const mapContainer = document.getElementById("map");
     mapContainer.appendChild(colorPalette);
+}
+
+// Helper function to darken a color by a percentage (e.g., 20%)
+function darkenColor(color, percent) {
+    let colorHex = color.replace("#", "");
+    let r = parseInt(colorHex.substring(0, 2), 16);
+    let g = parseInt(colorHex.substring(2, 4), 16);
+    let b = parseInt(colorHex.substring(4, 6), 16);
+
+    r = Math.max(0, r - (r * (percent / 100)));
+    g = Math.max(0, g - (g * (percent / 100)));
+    b = Math.max(0, b - (b * (percent / 100)));
+
+    return `#${Math.round(r).toString(16).padStart(2, '0')}${Math.round(g).toString(16).padStart(2, '0')}${Math.round(b).toString(16).padStart(2, '0')}`;
 }
 
 // Add event listener for the 'New map' button
