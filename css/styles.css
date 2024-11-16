@@ -29,7 +29,7 @@ html, body, #map {
     margin: 0;
     padding: 0;
     font-family: Barlow, sans-serif;
-    cursor: url('../assets/images/palette/C.cur'), default;
+    cursor: url('../assets/images/brush.cur'), default;
 }
 
 .content-panel {
@@ -55,7 +55,7 @@ html, body, #map {
 /* Description bar */
 
 .image-container {
-    width: 10%; /* Set the width to 15% of the parent */
+    width: 13%; /* Set the width to 15% of the parent */
     margin-top: 0.7rem; /* Adds spacing above the image container */
     margin-bottom: 0.7rem; /* Adds spacing below the image container */
     text-align: center; /* Centers the image horizontally */
@@ -154,7 +154,7 @@ html, body, #map {
 }
 
 .mapboxgl-canvas {
-    cursor: url('../assets/images/brush.cur'), auto !important;
+    cursor: url('../assets/images/brush.cur'), auto;
 }
 
 

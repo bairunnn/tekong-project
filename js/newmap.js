@@ -2,32 +2,19 @@
 function renderNewMap() {
     // Create the color-palette container
     const colorPalette = document.createElement("div");
-    colorPalette.id = "color-palette";
-    colorPalette.style.position = "absolute";
-    colorPalette.style.top = "10px";
-    colorPalette.style.left = "10px";  // Align to the left side of the map panel
-    colorPalette.style.zIndex = "1000"; // Ensure it's above the map
-    colorPalette.style.backgroundColor = "#fff";
-    colorPalette.style.border = "1px solid #ccc";
-    colorPalette.style.padding = "10px";
-    colorPalette.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.2)";
-    colorPalette.style.borderRadius = "8px";
-    colorPalette.style.width = "150px"; // Set the width of the color palette (narrower)
-    colorPalette.style.display = "flex";
-    colorPalette.style.flexDirection = "column"; // Stack buttons vertically
-    colorPalette.style.alignItems = "stretch"; // Ensure buttons stretch to full width of colorPalette
+    colorPalette.id = "color-palette"; // All styles are now handled in CSS
 
-    // Define the zoning categories and their corresponding colors
+    // Define the zoning categories and their corresponding colors and cursor files
     const zoningMap = {
-        "C": { name: "Commercial (offices & retail)", color: "#215297" },
-        "E": { name: "Education", color: "#f4f2c1" },
-        "H": { name: "Housing", color: "#f6bb81" },
-        "L": { name: "Light industry", color: "#c8a5cf" },
-        "M": { name: "Military (special uses)", color: "#516702" },
-        "O": { name: "Open space (forest)", color: "#abb20c" },
-        "P": { name: "Park", color: "#1ea33a" },
-        "S": { name: "Sports", color: "#a3d49d" },
-        "W": { name: "Waterbody", color: "#bedef3" }
+        "C": { name: "Commercial (offices & retail)", color: "#215297", cursor: "../assets/images/brush-palette/C.cur" },
+        "E": { name: "Education", color: "#f4f2c1", cursor: "../assets/images/brush-palette/E.cur" },
+        "H": { name: "Housing", color: "#f6bb81", cursor: "../assets/images/brush-palette/H.cur" },
+        "L": { name: "Light industry", color: "#c8a5cf", cursor: "../assets/images/brush-palette/L.cur" },
+        "M": { name: "Military (special uses)", color: "#516702", cursor: "../assets/images/brush-palette/M.cur" },
+        "O": { name: "Open space (forest)", color: "#abb20c", cursor: "../assets/images/brush-palette/O.cur" },
+        "P": { name: "Park", color: "#1ea33a", cursor: "../assets/images/brush-palette/P.cur" },
+        "S": { name: "Sports", color: "#a3d49d", cursor: "../assets/images/brush-palette/S.cur" },
+        "W": { name: "Waterbody", color: "#bedef3", cursor: "../assets/images/brush-palette/W.cur" }
     };
 
     // Add buttons for each zoning category
@@ -37,13 +24,20 @@ function renderNewMap() {
         button.classList.add("btn", "mb-2"); // Add classes for vertical layout
         button.style.marginBottom = "8px"; // Space between buttons
         button.style.backgroundColor = zoningMap[zone].color; // Set the background color
-        button.style.color = "#fff"; // Ensure text is readable
-        button.style.border = "none"; // Remove button border
         button.style.fontWeight = "bold"; // Make text bold
         button.style.width = "100%"; // Make buttons take up the full width of the parent container
+        button.style.border = "none"; // Remove button border
 
-        // Add an action for the button (for now, log the zoning category)
+        // Set text color for specific zones
+        if (zone === "E" || zone === "H" || zone === "S" || zone === "W") {
+            button.style.color = "#000"; // Set text color to black for E, H, S, W
+        } else {
+            button.style.color = "#fff"; // Default text color is white
+        }
+
+        // Add an action for the button to change cursor
         button.onclick = function() {
+            document.body.style.cursor = `url(${zoningMap[zone].cursor}), auto`; // Change the cursor
             console.log(`Button for ${zoningMap[zone].name} clicked`);
         };
 
