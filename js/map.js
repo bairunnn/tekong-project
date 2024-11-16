@@ -44,19 +44,4 @@ map.on('load', function() {
         }
     });
 
-    // 1C. Tekong_Light_Railway_20241104 (line)
-    map.addLayer({
-        id: "Tekong_Light_Railway_20241104",
-        type: "line",
-        source: {
-            type: "geojson",
-            data: "assets/layers/Tekong_Light_Railway_20241104.geojson"
-        },
-        paint: {
-            "line-color": "#f598d1",
-            "line-width": 2,
-            "line-opacity": 1
-        }
-    });
-
 });
