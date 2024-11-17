@@ -77,6 +77,17 @@ map.on('load', function() {
 
 });
 
+// Reset button functionality
+document.getElementById('reset-button').addEventListener('click', function() {
+    map.flyTo({
+        center: [104.029311, 1.388],
+        zoom: 12,
+        bearing: 0,
+        essential: true
+    });
+});
+
+
 // // Access the Mapbox map container
 // const mapContainer = document.getElementById('map');
 

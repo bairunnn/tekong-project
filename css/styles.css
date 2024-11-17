@@ -50,6 +50,23 @@ html, body, #map {
     width: 70%;
 }
 
+.floating-button {
+    position: absolute;
+    bottom: 3.5%; /* Distance from the bottom */
+    right: 0.5%; /* Distance from the right */
+    background-color: #f4f2ec; /* Button background color */
+    border: 1px solid #ccc; /* Button border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Cursor style */
+    z-index: 1000; /* Ensure it is above other elements */
+    width: 8%;
+    text-align: center;
+}
+
+.floating-button:hover {
+    background-color: #cccccc; /* Change color on hover */
+}
+
 /* ###################################################### */
 
 /* Description bar */
