@@ -5,6 +5,16 @@ function renderNewMap() {
     const colorPalette = document.createElement("div");
     colorPalette.id = "color-palette"; // All styles are now handled in CSS
 
+    const header = document.createElement("h3");
+    header.textContent = "Colour palette\n(Land uses)";  // Set the header text
+    header.style.textAlign = "center";  // Center the header text
+    header.style.marginBottom = "10px"; // Space below the header
+    header.style.fontSize = "1.1rem"; // Set a font size for the header
+    header.style.fontWeight = "bold"; // Make the header text bold
+
+    // Append the header to the color palette
+    colorPalette.appendChild(header);
+
     // Define the zoning categories and their corresponding colors and cursor files
     const zoningMap = {
         "C": { name: "Commercial (offices & retail)", color: "#215297", cursor: "../assets/images/brush-palette/C.cur" },
@@ -25,7 +35,7 @@ function renderNewMap() {
         button.classList.add("btn", "mb-2"); // Add classes for vertical layout
         button.style.marginBottom = "8px"; // Space between buttons
         button.style.backgroundColor = zoningMap[zone].color; // Set the background color
-        button.style.fontWeight = "bold"; // Make text bold
+        button.style.fontWeight = "600"; // Make text semibold
         button.style.width = "100%"; // Make buttons take up the full width of the parent container
         button.style.border = "none"; // Remove button border
 

@@ -57,6 +57,7 @@ html, body, #map {
     background-color: #f4f2ec; /* Button background color */
     border: 1px solid #ccc; /* Button border */
     border-radius: 5px; /* Rounded corners */
+    padding: 5px; /* Padding for button */
     cursor: pointer; /* Cursor style */
     z-index: 1000; /* Ensure it is above other elements */
     width: 8%;
