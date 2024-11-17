@@ -14,37 +14,21 @@ map.addControl(nav, 'top-right');
 // Initialize all layers with opacity set to 0
 map.on('load', function() {
 
-    // 1. MRTLines_20241113_future (line)
+    // 1. A-roads-all.geojson (fill)
     map.addLayer({
-        id: "MRTLines_20241113_future",
-        type: "line",
+        id: "A-roads-all",
+        type: "fill",
         source: {
             type: "geojson",
-            data: "assets/layers/MRTLines_20241113_future.geojson"
+            data: "assets/grids/Grid-A/A-roads-all.geojson"
         },
         paint: {
-            "line-color": ["get", "colour"],
-            "line-width": 2,
-            "line-opacity": 1
+            "fill-color": "#ffffff",
+            "fill-opacity": 1,
         }
     });
 
-    // 2. CRL_with_extension_20241104 (line)
-    map.addLayer({
-        id: "CRL_with_extension_20241104",
-        type: "line",
-        source: {
-            type: "geojson",
-            data: "assets/layers/CRL_with_extension_20241104.geojson"
-        },
-        paint: {
-            "line-color": "#94c83d",
-            "line-width": 2,
-            "line-opacity": 1
-        }
-    });
-
-    // 3. A-grid-20241116-3 (fill)
+    // 2. A-grid-20241116-3 (fill)
     map.addLayer({
         id: "A-grid-20241116-3",
         type: "fill",
@@ -72,8 +56,35 @@ map.on('load', function() {
         }
     });
 
-    // 4. A-roads-all.geojson (fill)
-
+    // 3. MRTLines_20241113_future (line)
+    map.addLayer({
+        id: "MRTLines_20241113_future",
+        type: "line",
+        source: {
+            type: "geojson",
+            data: "assets/layers/MRTLines_20241113_future.geojson"
+        },
+        paint: {
+            "line-color": ["get", "colour"],
+            "line-width": 2,
+            "line-opacity": 1
+        }
+    });
+    
+    // 4. CRL_with_extension_20241104 (line)
+    map.addLayer({
+        id: "CRL_with_extension_20241104",
+        type: "line",
+        source: {
+            type: "geojson",
+            data: "assets/layers/CRL_with_extension_20241104.geojson"
+        },
+        paint: {
+            "line-color": "#94c83d",
+            "line-width": 2,
+            "line-opacity": 1
+        }
+    });
 
 });
 
