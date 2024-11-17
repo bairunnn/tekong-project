@@ -6,7 +6,7 @@ function renderNewMap() {
     colorPalette.id = "color-palette"; // All styles are now handled in CSS
 
     const header = document.createElement("h3");
-    header.textContent = "Colour palette\n(Land uses)";  // Set the header text
+    header.textContent = "Select a category below to add to map";  // Set the header text
     header.style.textAlign = "center";  // Center the header text
     header.style.marginBottom = "10px"; // Space below the header
     header.style.fontSize = "1.1rem"; // Set a font size for the header
