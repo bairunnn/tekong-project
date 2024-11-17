@@ -17,15 +17,15 @@ function renderNewMap() {
 
     // Define the zoning categories and their corresponding colors and cursor files
     const zoningMap = {
-        "C": { name: "Commercial (offices & retail)", color: "#215297", cursor: "../assets/images/brush-palette/C.cur" },
-        "E": { name: "Education", color: "#f4f2c1", cursor: "../assets/images/brush-palette/E.cur" },
-        "H": { name: "Housing", color: "#f6bb81", cursor: "../assets/images/brush-palette/H.cur" },
-        "L": { name: "Light industry", color: "#c8a5cf", cursor: "../assets/images/brush-palette/L.cur" },
-        "M": { name: "Military (special uses)", color: "#516702", cursor: "../assets/images/brush-palette/M.cur" },
-        "O": { name: "Open space (forest)", color: "#abb20c", cursor: "../assets/images/brush-palette/O.cur" },
-        "P": { name: "Park", color: "#1ea33a", cursor: "../assets/images/brush-palette/P.cur" },
-        "S": { name: "Sports", color: "#a3d49d", cursor: "../assets/images/brush-palette/S.cur" },
-        "W": { name: "Waterbody", color: "#bedef3", cursor: "../assets/images/brush-palette/W.cur" }
+        "C": { name: "Commercial (offices & retail)", color: "#215297", cursor: "./assets/images/brush-palette/C.cur" },
+        "E": { name: "Education", color: "#f4f2c1", cursor: "./assets/images/brush-palette/E.cur" },
+        "H": { name: "Housing", color: "#f6bb81", cursor: "./assets/images/brush-palette/H.cur" },
+        "L": { name: "Light industry", color: "#c8a5cf", cursor: "./assets/images/brush-palette/L.cur" },
+        "M": { name: "Military (special uses)", color: "#516702", cursor: "./assets/images/brush-palette/M.cur" },
+        "O": { name: "Open space (forest)", color: "#abb20c", cursor: "./assets/images/brush-palette/O.cur" },
+        "P": { name: "Park", color: "#1ea33a", cursor: "./assets/images/brush-palette/P.cur" },
+        "S": { name: "Sports", color: "#a3d49d", cursor: "./assets/images/brush-palette/S.cur" },
+        "W": { name: "Waterbody", color: "#bedef3", cursor: "./assets/images/brush-palette/W.cur" }
     };
 
     // Add buttons for each zoning category
@@ -54,7 +54,7 @@ function renderNewMap() {
             }
 
             // Darken the current button
-            button.style.backgroundColor = darkenColor(zoningMap[zone].color, 20); // Darken by 20%
+            button.style.backgroundColor = darkenColor(zoningMap[zone].color, 30); // Darken by 20%
 
             // Set the current button as active
             activeButton = button;
@@ -82,6 +82,9 @@ function renderNewMap() {
     // Append the color-palette to the map container
     const mapContainer = document.getElementById("map");
     mapContainer.appendChild(colorPalette);
+
+    // Enable zoning edits once the map is initialized
+    enableZoningEdit(map, activeButton, zoningMap);
 }
 
 // Helper function to darken a color by a percentage (e.g., 20%)
@@ -97,6 +100,3 @@ function darkenColor(color, percent) {
 
     return `#${Math.round(r).toString(16).padStart(2, '0')}${Math.round(g).toString(16).padStart(2, '0')}${Math.round(b).toString(16).padStart(2, '0')}`;
 }
-
-// Add event listener for the 'New map' button
-document.getElementById("new-map-btn").addEventListener("click", renderNewMap);
