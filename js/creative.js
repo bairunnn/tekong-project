@@ -13,7 +13,7 @@ function loadCreativeMode() {
         </div>
         <h3><span style="font-size: 1.3em;">Creative mode</span></h3>
         <p>Welcome to the creative mode!</p>
-        <p>Here, Tekong is your canvas — each colour represents a type of land use, and you can colour it the way you like. Click on "New map" to get started!</p>
+        <p>Here, Tekong is your canvas — each colour represents a type of land use. To get started, click on "New map", select a colour, and start creating your very own map!</b></p>
 
         <!-- Buttons Section -->
         <div class="button-container">
