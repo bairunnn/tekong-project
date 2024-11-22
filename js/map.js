@@ -34,7 +34,7 @@ map.on('load', function() {
         type: "fill",
         source: {
             type: "geojson",
-            data: "assets/grids/Grid-A/A-grid-20241116-5.geojson"
+            data: "assets/grids/Grid-A/A-grid-20241120-2.geojson"
         },
         paint: {
             "fill-color": [
