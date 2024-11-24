@@ -139,12 +139,52 @@ function loadGalleryMode() {
         }, 500); // Wait for 500ms after user stops typing
     });
 
-
     // "Return to home" functionality
     document.getElementById('back-icon-section').addEventListener('click', () => {
         // Clear and load the default view
         homeView();
     });
+
+    // Add "creative-brush" hover effect using CSS
+    const paletteLogo = document.getElementById('gallery-svg');
+    paletteLogo.addEventListener('mouseover', () => {
+        paletteLogo.style.transform = 'scale(1.05)'; // Enlarge the icon
+        paletteLogo.style.transition = 'transform 0.3s ease'; // Smooth transition
+    });
+    paletteLogo.addEventListener('mouseout', () => {
+        paletteLogo.style.transform = 'scale(1)'; // Return to normal size
+    });
+
+    // Mouse move event to rotate the brush icon based on mouse position
+    function handleMouseMoveGallery(event) {
+        // Get the viewport dimensions
+        const viewportWidth = window.innerWidth;
+        const viewportHeight = window.innerHeight;
+
+        // Calculate the center of the viewport
+        const centerX = viewportWidth / 2;
+        const centerY = viewportHeight / 2;
+
+        // Get the mouse position
+        const mouseX = event.clientX;
+        const mouseY = event.clientY;
+
+        // Calculate the angle based on the mouse position
+        const deltaX = mouseX - centerX;
+        const deltaY = mouseY - centerY;
+        const angle = Math.atan2(deltaY, deltaX) * (45 / Math.PI) / 10; // Convert to degrees
+
+        // Use GSAP to animate the rotation of the brush icon
+        gsap.to("#gallery-svg", {
+            rotation: angle / 6,
+            duration: 0.5,
+            ease: "power1.out"
+        });
+    }
+
+    // Attach mousemove event listener for brush icon rotation
+    window.addEventListener("mousemove", handleMouseMoveGallery);
+
 }
 
 function renderMapLayer() {
