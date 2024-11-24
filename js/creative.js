@@ -1,4 +1,3 @@
-import { uploadMap } from './firebase.js';
 import { renderNewMap } from './newmap.js';
 
 // creative.js
@@ -33,7 +32,11 @@ function loadCreativeMode() {
     `;
 
     // Add event listener for the 'New map' button
-    document.getElementById("new-map-btn").addEventListener("click", renderNewMap);
+    document.getElementById("new-map-btn").addEventListener("click", function() {
+        renderNewMap();
+        clearCanvas();
+    });
+    
     document.getElementById("clear-canvas-btn").addEventListener("click", function() {
         // Prompt the user for confirmation
         const userConfirmation = confirm("Clear map canvas and start over?");
@@ -44,25 +47,11 @@ function loadCreativeMode() {
         }
     });
 
-    // Add an event listener to the "Upload" button
-    document.getElementById("upload-btn").addEventListener("click", handleUploadMap);
-
-
-    // // Add button functionalities
-    // document.getElementById('new-map-btn').addEventListener('click', () => {
-    //     alert('New map functionality goes here!');
-    //     // Logic for starting a new map
-    // });
-
-    // document.getElementById('retrieve-map-btn').addEventListener('click', () => {
-    //     alert('Retrieve map functionality goes here!');
-    //     // Logic for retrieving a saved map
-    // });
-
-    // document.getElementById('screenshot-btn').addEventListener('click', () => {
-    //     alert('Save screenshot functionality goes here!');
-    //     // Logic for saving a screenshot
-    // });
+    // Show modal when the "Upload Map" button is clicked
+    document.getElementById("upload-btn").addEventListener("click", function() {
+        const uploadModal = new bootstrap.Modal(document.getElementById("uploadModal"));
+        uploadModal.show(); // Show the modal when the button is clicked
+    });
 
     // Add "creative-brush" hover effect using CSS
     const brushIcon = document.getElementById('creative-brush');

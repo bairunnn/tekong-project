@@ -16,18 +16,8 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-// Modal elements
-const uploadMapBtn = document.getElementById("uploadMapBtn"); // The button inside the modal to upload
-const uploadModal = new bootstrap.Modal(document.getElementById("uploadModal")); // The modal dialog
-const mapForm = document.getElementById("mapForm"); // The form inside the modal
-
-// Open modal to get user inputs
-function openUploadModal() {
-    uploadModal.show();
-}
-
-// Handle form submission in the modal
-async function handleUploadMap() {
+// Handle form submission in the modal after user clicks "Confirm upload"
+async function handleConfirmUpload() {
     // Get user input from the modal form
     const userMapTitle = document.getElementById("mapTitle").value;
     const userDescription = document.getElementById("mapDescription").value;
@@ -35,7 +25,7 @@ async function handleUploadMap() {
 
     // Validate user input
     if (!userMapTitle || !userDescription || !userAuthor) {
-        alert("All fields are required to upload the map.");
+        alert("Please fill in all fields: Title, Description, and Author.");
         return;
     }
 
@@ -59,7 +49,9 @@ async function handleUploadMap() {
 
         // Notify the user that the map was successfully uploaded
         alert(`Map uploaded successfully! Document ID: ${docRef.id}`);
-        uploadModal.hide();  // Close the modal after upload
+
+        // Close the modal after upload
+        uploadModal.hide();
     } catch (error) {
         // Handle errors
         console.error("Error uploading map: ", error);
@@ -67,11 +59,8 @@ async function handleUploadMap() {
     }
 }
 
-// Add event listener to the "Upload Map" button inside the modal
-uploadMapBtn.addEventListener("click", handleUploadMap);
-
-// Trigger the modal to open when a button or other event occurs
-document.getElementById("creative-mode-btn").addEventListener("click", openUploadModal);
+// Add event listener to the "Confirm upload" button inside the modal
+document.getElementById("confirmUpload").addEventListener("click", handleConfirmUpload);
 
 // Export Firestore database and utility functions
-export { db, handleUploadMap };
+export { db };
