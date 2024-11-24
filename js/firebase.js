@@ -1,6 +1,6 @@
 // Import Firebase modules
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js';
-import { getFirestore, collection, addDoc } from 'https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js';
+import { getFirestore, collection, addDoc, getDocs } from 'https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js';
 
 // Firebase configuration
 const firebaseConfig = {
@@ -63,5 +63,41 @@ async function handleConfirmUpload() {
 // Add event listener to the "Confirm upload" button inside the modal
 document.getElementById("confirm-upload-btn").addEventListener("click", handleConfirmUpload);
 
+// Get maps
+async function getAllMaps() {
+    const mapsCollection = collection(db, "maps");
+    
+    // Object to store the document IDs and their corresponding data
+    const mapsData = {}; 
+
+    try {
+        const querySnapshot = await getDocs(mapsCollection);
+        
+        // Iterate over each document snapshot
+        querySnapshot.forEach((docSnap) => {
+            if (docSnap.exists()) {
+                const docId = docSnap.id; // Document ID
+                const docData = docSnap.data(); // Document data
+                
+                // Store document ID and data in the mapsData object
+                mapsData[docId] = docData;
+
+                // Optionally log the document ID and data
+                console.log("Document ID:", docId);
+                console.log("Document data:", docData);
+            } else {
+                console.log("No such document!");
+            }
+        });
+
+        // Return the mapsData object containing all documents
+        return mapsData;
+    } catch (error) {
+        console.error("Error getting documents: ", error);
+        return {}; // Return an empty object in case of error
+    }
+}
+
+
 // Export Firestore database and utility functions
-export { db };
+export { db , getAllMaps };

@@ -1,5 +1,6 @@
 // import { renderNewMap } from './newmap.js';
 import { homeView } from './default.js';
+import { getAllMaps } from './firebase.js';
 
 // gallery.js
 
@@ -16,6 +17,13 @@ function loadGalleryMode() {
         </div>
         <h3><span style="font-size: 1.3em;">Gallery view</span></h3>
         <p>Welcome to the map gallery. Explore map submissions from other people here!</b></p>
+        
+        <!-- Scrollable Titles Section -->
+        <div class="scrollable-titles-container" style="max-height: 200px; overflow-y: auto; border: 1px solid #ddd; padding: 10px; margin-bottom: 15px;">
+            <ul id="titles-list" style="list-style: none; padding: 0; margin: 0;">
+                <li>Loading titles...</li>
+            </ul>
+        </div>
 
         <!-- Back Icon Section -->
         <div class="d-flex align-items-center mt-3" id="back-icon-section">
@@ -24,53 +32,107 @@ function loadGalleryMode() {
         </div>
     `;
 
-    const brushIcon = document.getElementById('gallery-svg');
-    brushIcon.addEventListener('mouseover', () => {
-        brushIcon.style.transform = 'scale(1.05)'; // Enlarge the icon
-        brushIcon.style.transition = 'transform 0.3s ease'; // Smooth transition
-    });
-    brushIcon.addEventListener('mouseout', () => {
-        brushIcon.style.transform = 'scale(1)'; // Return to normal size
-    });
+    // Fetch titles from Firestore using the mapsData object
+    const titlesList = document.getElementById('titles-list');
 
-    // Mouse move event to rotate the brush icon based on mouse position
-    function handleMouseMove(event) {
-        // Get the viewport dimensions
-        const viewportWidth = window.innerWidth;
-        const viewportHeight = window.innerHeight;
+    // Assuming `mapsData` is the object with map information including colors for Ax
+    async function fetchTitles() {
+        const titlesList = document.getElementById('titles-list');
+        titlesList.innerHTML = '<li>Loading titles...</li>'; // Show loading message while fetching
 
-        // Calculate the center of the viewport
-        const centerX = viewportWidth / 2;
-        const centerY = viewportHeight / 2;
+        try {
+            // Get all maps from Firestore
+            const mapsData = await getAllMaps(); // Fetch all map documents
 
-        // Get the mouse position
-        const mouseX = event.clientX;
-        const mouseY = event.clientY;
+            // Clear the loading message
+            titlesList.innerHTML = '';
 
-        // Calculate the angle based on the mouse position
-        const deltaX = mouseX - centerX;
-        const deltaY = mouseY - centerY;
-        const angle = Math.atan2(deltaY, deltaX) * (45 / Math.PI) / 10; // Convert to degrees
+            const mapEntries = Object.entries(mapsData); // Convert mapsData object to an array of [key, value] pairs
 
-        // Use GSAP to animate the rotation of the brush icon
-        gsap.to("#gallery-svg", {
-            rotation: angle / 6,
-            duration: 0.1,
-            ease: "power1.out"
-        });
+            if (mapEntries.length === 0) {
+                titlesList.innerHTML = '<li>No titles found.</li>';
+            } else {
+                // Iterate through all the maps (from mapEntries)
+                mapEntries.forEach(([docId, map]) => {
+                    const title = map.title; // Assuming each map has a 'title' field
+
+                    if (title) {
+                        // Create a list item for each title
+                        const listItem = document.createElement('li');
+                        listItem.textContent = title;
+                        listItem.style.cursor = 'pointer';
+                        listItem.style.marginBottom = '5px';
+
+                        // Add a click handler to override localStorage colors
+                        listItem.addEventListener('click', () => {
+                            console.log(`Title clicked: ${title}`);
+                        
+                            // Override localStorage with colors from the selected map
+                            const mapColors = map.colors; // Assuming `colors` is an object like { A1: '#color', A2: '#color', ... }
+                        
+                            // Iterate over the keys (A1, A2, ...) and update localStorage
+                            for (let i = 1; i <= 50; i++) {
+                                const polygonKey = `A${i}`;
+                                if (mapColors[polygonKey]) {
+                                    // Set the localStorage color for the polygon (A1, A2, A50, etc.)
+                                    localStorage.setItem(`colour${polygonKey}`, mapColors[polygonKey]);
+                                }
+                            }
+                        
+                            // Optionally log the updated localStorage to verify
+                            console.log('Updated colors in localStorage:');
+                            for (let i = 1; i <= 50; i++) {
+                                const polygonKey = `A${i}`;
+                                console.log(`${polygonKey}: ${localStorage.getItem(`colour${polygonKey}`)}`);
+                            }
+                        
+                            // Refresh map with new colors
+                            const polygonNames = [
+                                "A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "A10",
+                                "A11", "A12", "A13", "A14", "A15", "A16", "A17", "A18", "A19", "A20",
+                                "A21", "A22", "A23", "A24", "A25", "A26", "A27", "A28", "A29", "A30",
+                                "A31", "A32", "A33", "A34", "A35", "A36", "A37", "A38", "A39", "A40",
+                                "A41", "A42", "A43", "A44", "A45", "A46", "A47", "A48", "A49", "A50"
+                            ];
+                        
+                            // Create an array of the colors for all polygons (re-render map)
+                            const colorArray = polygonNames.map(polygon => {
+                                return localStorage.getItem(`colour${polygon}`) || "#c300ba"; // Fallback to default color if not found
+                            });
+                        
+                            // Ensure the map is loaded and the layer exists before setting paint properties
+                            if (map.isStyleLoaded()) {
+                                // Update the layer with the new colors for all polygons
+                                map.setPaintProperty('A-grid-20241116-3', 'fill-color', [
+                                    "match",
+                                    ["get", "Name"], // get the 'Name' property from GeoJSON
+                                    ...polygonNames.flatMap((polygon, index) => [polygon, colorArray[index]]), // Map polygon names to their colors
+                                    "#c300ba" // default color if no match (fallback)
+                                ]);
+                            } else {
+                                console.error("Map style not loaded yet");
+                            }
+                        });
+
+                        titlesList.appendChild(listItem);
+                    }
+                });
+            }
+        } catch (error) {
+            console.error('Error fetching titles:', error);
+            titlesList.innerHTML = '<li>Error loading titles.</li>';
+        }
     }
 
-    // Attach mousemove event listener for brush icon rotation
-    window.addEventListener("mousemove", handleMouseMove);
+    // Call the function to load titles when needed
+    fetchTitles();
+
+    
 
     // "Return to home" functionality
     document.getElementById('back-icon-section').addEventListener('click', () => {
         // Clear and load the default view
         homeView();
-    });
-
-    brushIcon.addEventListener('click', () => {
-        alert("You cannot spell housing without you and I...");
     });
 }
 

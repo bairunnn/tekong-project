@@ -1,4 +1,3 @@
-
 let activeButton = null;  // Track the currently active button
 
 function renderNewMap() {
@@ -112,6 +111,7 @@ function renderNewMap() {
             // Log the Name of the clicked polygon (for verification)
             console.log(`Polygon ${polygonName} clicked`);
 
+            // Refresh map with new colors
             const polygonNames = [
                 "A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "A10",
                 "A11", "A12", "A13", "A14", "A15", "A16", "A17", "A18", "A19", "A20",

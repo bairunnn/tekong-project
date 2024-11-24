@@ -18,6 +18,9 @@ Creative mode CSS
 - hover over return to home
 - default creative mode cursor
 
+Gallery mode CSS
+- title container
+
 */
 
 /* ###################################################### */
@@ -179,4 +182,14 @@ html, body, #map {
     cursor: url('../assets/images/brush.cur'), auto;
 }
 
+/* ###################################################### */
 
+/* Gallery mode */
+
+.scrollable-titles-container {
+    height: 70%; /* 50% of the parent height */
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 15px;
+}
