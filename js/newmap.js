@@ -73,6 +73,7 @@ function renderNewMap() {
             });
 
             console.log(`Button for ${zoningMap[zone].name} clicked`);
+            console.log(`Active button color: ${zoningMap[zone].color}`);
         };
 
         // Append the button to the color-palette
@@ -83,8 +84,31 @@ function renderNewMap() {
     const mapContainer = document.getElementById("map");
     mapContainer.appendChild(colorPalette);
 
-    // Enable zoning edits once the map is initialized
-    enableZoningEdit(map, activeButton, zoningMap);
+    // Console log the property name
+    map.on('click', 'A-grid-20241116-3', function(e) {
+        // Get the features at the click point
+        const features = map.queryRenderedFeatures(e.point, {
+            layers: ['A-grid-20241116-3']
+        });
+    
+        if (features.length > 0) {
+            // Get the Name of the clicked polygon
+            const polygonName = features[0].properties.Name;
+    
+            // Get the active button's color
+            const color = zoningMap[activeButton.dataset.zone].color; // Get the active button's color
+    
+            // Store the color in localStorage
+            localStorage.setItem(`colour${polygonName}`, color);
+    
+            // Retrieve the newly stored value from localStorage and log it
+            const updatedColor = localStorage.getItem(`colour${polygonName}`);
+            console.log(`Stored colour${polygonName} as ${updatedColor} in localStorage`);
+            
+            // Log the Name of the clicked polygon (for verification)
+            console.log(`Polygon ${polygonName} clicked`);
+        }
+    });
 }
 
 // Helper function to darken a color by a percentage (e.g., 20%)
@@ -100,3 +124,4 @@ function darkenColor(color, percent) {
 
     return `#${Math.round(r).toString(16).padStart(2, '0')}${Math.round(g).toString(16).padStart(2, '0')}${Math.round(b).toString(16).padStart(2, '0')}`;
 }
+

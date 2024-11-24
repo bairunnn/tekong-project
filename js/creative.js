@@ -79,8 +79,8 @@ function loadCreativeMode() {
 
         // Use GSAP to animate the rotation of the brush icon
         gsap.to("#creative-brush", {
-            rotation: angle / 4,
-            duration: 0.2,
+            rotation: angle / 6,
+            duration: 0.1,
             ease: "power1.out"
         });
     }
