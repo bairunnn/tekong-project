@@ -187,9 +187,20 @@ html, body, #map {
 /* Gallery mode */
 
 .scrollable-titles-container {
-    height: 70%; /* 50% of the parent height */
+    height: 20%; /* 50% of the parent height */
     overflow-y: auto;
     border: 1px solid #ddd;
     padding: 10px;
+    margin-bottom: 15px;
+}
+
+/* Scrollable Description Container */
+.scrollable-description-container {
+    height: 20%; /* Adjust this height based on your layout */
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    padding: 10px;
+    font-style: italic;
+    color: #555;
     margin-bottom: 15px;
 }

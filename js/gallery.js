@@ -11,7 +11,7 @@ function loadGalleryMode() {
         <div class="text-left mb-2" id="galleryIcon">
             <div id="gallery-svg">
                 <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-palette-fill" viewBox="0 0 16 16">
-                <path d="M12.433 10.07C14.133 10.585 16 11.15 16 8a8 8 0 1 0-8 8c1.996 0 1.826-1.504 1.649-3.08-.124-1.101-.252-2.237.351-2.92.465-.527 1.42-.237 2.433.07M8 5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m4.5 3a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3M5 6.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m.5 6.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
+                    <path d="M12.433 10.07C14.133 10.585 16 11.15 16 8a8 8 0 1 0-8 8c1.996 0 1.826-1.504 1.649-3.08-.124-1.101-.252-2.237.351-2.92.465-.527 1.42-.237 2.433.07M8 5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m4.5 3a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3M5 6.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m.5 6.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
                 </svg>
             </div>
         </div>
@@ -19,10 +19,17 @@ function loadGalleryMode() {
         <p>Welcome to the map gallery. Explore map submissions from other people here!</b></p>
         
         <!-- Scrollable Titles Section -->
-        <div class="scrollable-titles-container" style="max-height: 200px; overflow-y: auto; border: 1px solid #ddd; padding: 10px; margin-bottom: 15px;">
+        <div class="scrollable-titles-container" style="overflow-y: auto; border: 1px solid #ddd; padding: 10px; margin-bottom: 15px;">
             <ul id="titles-list" style="list-style: none; padding: 0; margin: 0;">
                 <li>Loading titles...</li>
             </ul>
+        </div>
+
+        <p>Description of selected map:</p>
+
+        <!-- Description Section -->
+        <div id="map-description" class="scrollable-description-container">
+            <!-- Description will be injected here -->
         </div>
 
         <!-- Back Icon Section -->
@@ -34,8 +41,9 @@ function loadGalleryMode() {
 
     // Fetch titles from Firestore using the mapsData object
     const titlesList = document.getElementById('titles-list');
+    const mapDescription = document.getElementById('map-description'); // Element to display the description
 
-    // Assuming `mapsData` is the object with map information including colors for Ax
+    // Assuming `mapsData` is the object with map information including colors and description
     async function fetchTitles() {
         const titlesList = document.getElementById('titles-list');
         titlesList.innerHTML = '<li>Loading titles...</li>'; // Show loading message while fetching
@@ -63,9 +71,12 @@ function loadGalleryMode() {
                         listItem.style.cursor = 'pointer';
                         listItem.style.marginBottom = '5px';
 
-                        // Add a click handler to override localStorage colors
+                        // Add a click handler to show map description and update localStorage colors
                         listItem.addEventListener('click', () => {
                             console.log(`Title clicked: ${title}`);
+                        
+                            // Display the description of the selected map
+                            mapDescription.innerHTML = map.description || 'No description available for this map.';
                         
                             // Override localStorage with colors from the selected map
                             const mapColors = map.colors; // Assuming `colors` is an object like { A1: '#color', A2: '#color', ... }
@@ -84,8 +95,10 @@ function loadGalleryMode() {
                             for (let i = 1; i <= 50; i++) {
                                 const polygonKey = `A${i}`;
                                 console.log(`${polygonKey}: ${localStorage.getItem(`colour${polygonKey}`)}`);
-                            }                        
-                            
+                            }
+
+                            // Re-render map layer A-grid-20241116-3 with new colors
+                            renderMapLayer(); // This function should reload the layer with updated colors
                         });
 
                         titlesList.appendChild(listItem);
@@ -106,6 +119,23 @@ function loadGalleryMode() {
         // Clear and load the default view
         homeView();
     });
+}
+
+function renderMapLayer() {
+    // Assuming you have a reference to the Mapbox map instance as `map`
+    const polygonsLayer = 'A-grid-20241116-3'; // The layer you want to update
+
+    // Iterate over the polygons in the layer and update their colors based on localStorage
+    map.setPaintProperty(polygonsLayer, 'fill-color', [
+        'match',
+        ['get', 'Name'],
+        ...Array.from({ length: 50 }, (_, i) => {
+            const polygonKey = `A${i + 1}`;
+            const color = localStorage.getItem(`colour${polygonKey}`);
+            return [polygonKey, color || '#FFFFFF']; // Default to white if no color is set
+        }).flat(),
+        '#FFFFFF', // Default color if no match
+    ]);
 }
 
 export { loadGalleryMode };
