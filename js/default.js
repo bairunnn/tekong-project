@@ -2,6 +2,11 @@ import { assignHomeViewListeners } from './navigation.js';
 
 // Function to load the default home view
 function homeView() {
+    const colorPalette = document.getElementById('color-palette');
+    if (colorPalette) {
+        colorPalette.remove();
+    }
+
     let contentPanel = document.getElementById('description-panel');
     contentPanel.innerHTML = `
         <h3><span style="font-size: 0.8em;">Come plan the future of</span><br><span style="font-size: 1.5em;">Tekong New Town!</span></h3>
