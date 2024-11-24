@@ -103,7 +103,6 @@ function loadCreativeMode() {
     brushIcon.addEventListener('click', () => {
         alert("You cannot spell housing without you and I...");
     });
-
 }
 
 function clearCanvas() {

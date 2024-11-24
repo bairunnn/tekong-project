@@ -1,4 +1,5 @@
 import { loadCreativeMode } from './creative.js';
+import { loadGalleryMode } from './gallery.js';
 
 // navigation.js
 
@@ -12,12 +13,27 @@ document.getElementById('creative-mode-btn').addEventListener('click', () => {
     loadCreativeMode();
 });
 
+document.getElementById('explore-ideas-btn').addEventListener('click', () => {
+    // Clear the content of the description-panel
+    let contentPanel = document.getElementById('description-panel');
+    contentPanel.innerHTML = '';  // This clears the current content
+
+    // Run the function from creative.js to populate the description-panel with Creative Mode content
+    loadGalleryMode();
+});
+
 function assignHomeViewListeners() {
     // Event listener for the "creative-mode-btn"
     document.getElementById('creative-mode-btn').addEventListener('click', () => {
         let contentPanel = document.getElementById('description-panel');
         contentPanel.innerHTML = ''; // Clear the current content
         loadCreativeMode();          // Load the creative mode
+    });
+
+    document.getElementById('explore-ideas-btn').addEventListener('click', () => {
+        let contentPanel = document.getElementById('description-panel');
+        contentPanel.innerHTML = '';  // This clears the current content
+        loadGalleryMode();
     });
 
     document.getElementById('hdb-image').addEventListener('click', function() {
