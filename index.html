@@ -60,6 +60,38 @@
             </div>
 
             <div id="reset-button" class="floating-button">Reset View</div>
+
+            <!-- Modal for user input -->
+            <div class="modal" id="uploadModal" tabindex="-1" aria-labelledby="uploadModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="uploadModalLabel">Upload Map Details</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="mapForm">
+                                <div class="mb-3">
+                                    <label for="mapTitle" class="form-label">Map Title</label>
+                                    <input type="text" class="form-control" id="mapTitle" placeholder="Enter map title" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="mapDescription" class="form-label">Description</label>
+                                    <textarea class="form-control" id="mapDescription" rows="3" placeholder="Enter a description" required></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="mapAuthor" class="form-label">Author</label>
+                                    <input type="text" class="form-control" id="mapAuthor" placeholder="Enter your name" required>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-primary" id="uploadMapBtn">Upload Map</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 

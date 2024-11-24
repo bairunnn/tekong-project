@@ -16,37 +16,50 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-// Function to upload the map
-async function uploadMap() {
-    // Prompt the user for a title and description
-    const userMapTitle = prompt("Enter a title for your map:");
-    const userDescription = prompt("Enter a description for your map:");
+// Modal elements
+const uploadMapBtn = document.getElementById("uploadMapBtn"); // The button inside the modal to upload
+const uploadModal = new bootstrap.Modal(document.getElementById("uploadModal")); // The modal dialog
+const mapForm = document.getElementById("mapForm"); // The form inside the modal
 
-    // Check if the user provided the required inputs
-    if (!userMapTitle || !userDescription) {
-        alert("Both title and description are required to upload the map.");
+// Open modal to get user inputs
+function openUploadModal() {
+    uploadModal.show();
+}
+
+// Handle form submission in the modal
+async function handleUploadMap() {
+    // Get user input from the modal form
+    const userMapTitle = document.getElementById("mapTitle").value;
+    const userDescription = document.getElementById("mapDescription").value;
+    const userAuthor = document.getElementById("mapAuthor").value;
+
+    // Validate user input
+    if (!userMapTitle || !userDescription || !userAuthor) {
+        alert("All fields are required to upload the map.");
         return;
     }
 
-    // Prepare the data to upload
+    // Prepare the map data to upload to Firebase
     const mapData = {
         title: userMapTitle,
         description: userDescription,
+        author: userAuthor,
         colors: {} // Object to store polygon colors
     };
 
     // Fetch polygon colors from localStorage and add to mapData
     for (let i = 1; i <= 50; i++) {
         const polygonKey = `A${i}`;
-        mapData.colors[polygonKey] = localStorage.getItem(`colour${polygonKey}`) || "#f4f2ec"; // Default to '#f4f2ec' if not set
+        mapData.colors[polygonKey] = localStorage.getItem(`colour${polygonKey}`) || "#f4f2ec"; // Default color
     }
 
     try {
-        // Write data to the Firestore "maps" collection
+        // Upload map data to Firestore
         const docRef = await addDoc(collection(db, "maps"), mapData);
 
-        // Notify the user of successful upload
+        // Notify the user that the map was successfully uploaded
         alert(`Map uploaded successfully! Document ID: ${docRef.id}`);
+        uploadModal.hide();  // Close the modal after upload
     } catch (error) {
         // Handle errors
         console.error("Error uploading map: ", error);
@@ -54,5 +67,11 @@ async function uploadMap() {
     }
 }
 
-// Export the Firestore database and utility functions
-export { db, uploadMap };
+// Add event listener to the "Upload Map" button inside the modal
+uploadMapBtn.addEventListener("click", handleUploadMap);
+
+// Trigger the modal to open when a button or other event occurs
+document.getElementById("creative-mode-btn").addEventListener("click", openUploadModal);
+
+// Export Firestore database and utility functions
+export { db, handleUploadMap };

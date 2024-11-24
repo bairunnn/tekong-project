@@ -45,7 +45,7 @@ function loadCreativeMode() {
     });
 
     // Add an event listener to the "Upload" button
-    document.getElementById("upload-btn").addEventListener("click", uploadMap);
+    document.getElementById("upload-btn").addEventListener("click", handleUploadMap);
 
 
     // // Add button functionalities
