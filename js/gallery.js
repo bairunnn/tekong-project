@@ -16,7 +16,7 @@ function loadGalleryMode() {
             </div>
         </div>
         <h3><span style="font-size: 1.3em;">Gallery view</span></h3>
-        <p>Welcome to the map gallery. Explore map submissions from other people here!</b></p>
+        <p>Explore map submissions from other people here!</b></p>
         
         <!-- Scrollable Titles Section -->
         <div class="scrollable-titles-container" style="overflow-y: auto; border: 1px solid #ddd; padding: 10px; margin-bottom: 15px;">
@@ -98,7 +98,10 @@ function loadGalleryMode() {
                             }
 
                             // Re-render map layer A-grid-20241116-3 with new colors
-                            renderMapLayer(); // This function should reload the layer with updated colors
+                            renderMapLayer();
+
+                            // Highlight the selected row
+                            highlightSelectedRow(listItem);
                         });
 
                         titlesList.appendChild(listItem);
@@ -136,6 +139,18 @@ function renderMapLayer() {
         }).flat(),
         '#FFFFFF', // Default color if no match
     ]);
+}
+
+function highlightSelectedRow(selectedRow) {
+    const rows = document.querySelectorAll('#titles-list li');
+    
+    // Remove highlight from all rows
+    rows.forEach(row => {
+        row.style.backgroundColor = ''; // Reset background color
+    });
+
+    // Highlight the selected row
+    selectedRow.style.backgroundColor = '#e6e4de'; // Highlight the selected row
 }
 
 export { loadGalleryMode };
