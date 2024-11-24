@@ -1,55 +1,64 @@
 // May this code work
 
-let colourA1 = '#f4f2ec';
-let colourA2 = '#f4f2ec';
-let colourA3 = '#f4f2ec';
-let colourA4 = '#f4f2ec';
-let colourA5 = '#f4f2ec';
-let colourA6 = '#f4f2ec';
-let colourA7 = '#f4f2ec';
-let colourA8 = '#f4f2ec';
-let colourA9 = '#f4f2ec';
-let colourA10 = '#f4f2ec';
-let colourA11 = '#f4f2ec';
-let colourA12 = '#f4f2ec';
-let colourA13 = '#f4f2ec';
-let colourA14 = '#f4f2ec';
-let colourA15 = '#f4f2ec';
-let colourA16 = '#f4f2ec';
-let colourA17 = '#f4f2ec';
-let colourA18 = '#f4f2ec';
-let colourA19 = '#f4f2ec';
-let colourA20 = '#f4f2ec';
-let colourA21 = '#f4f2ec';
-let colourA22 = '#f4f2ec';
-let colourA23 = '#f4f2ec';
-let colourA24 = '#f4f2ec';
-let colourA25 = '#f4f2ec';
-let colourA26 = '#f4f2ec';
-let colourA27 = '#f4f2ec';
-let colourA28 = '#f4f2ec';
-let colourA29 = '#f4f2ec';
-let colourA30 = '#f4f2ec';
-let colourA31 = '#f4f2ec';
-let colourA32 = '#f4f2ec';
-let colourA33 = '#f4f2ec';
-let colourA34 = '#f4f2ec';
-let colourA35 = '#f4f2ec';
-let colourA36 = '#f4f2ec';
-let colourA37 = '#f4f2ec';
-let colourA38 = '#f4f2ec';
-let colourA39 = '#f4f2ec';
-let colourA40 = '#f4f2ec';
-let colourA41 = '#f4f2ec';
-let colourA42 = '#f4f2ec';
-let colourA43 = '#f4f2ec';
-let colourA44 = '#bedef3';
-let colourA45 = '#516702';
-let colourA46 = '#516702';
-let colourA47 = '#516702';
-let colourA48 = '#516702';
-let colourA49 = '#516702';
-let colourA50 = '#abb20c';
+const defaultColors = {
+    A1: '#f4f2ec',
+    A2: '#f4f2ec',
+    A3: '#f4f2ec',
+    A4: '#f4f2ec',
+    A5: '#f4f2ec',
+    A6: '#f4f2ec',
+    A7: '#f4f2ec',
+    A8: '#f4f2ec',
+    A9: '#f4f2ec',
+    A10: '#f4f2ec',
+    A11: '#f4f2ec',
+    A12: '#f4f2ec',
+    A13: '#f4f2ec',
+    A14: '#f4f2ec',
+    A15: '#f4f2ec',
+    A16: '#f4f2ec',
+    A17: '#f4f2ec',
+    A18: '#f4f2ec',
+    A19: '#f4f2ec',
+    A20: '#f4f2ec',
+    A21: '#f4f2ec',
+    A22: '#f4f2ec',
+    A23: '#f4f2ec',
+    A24: '#f4f2ec',
+    A25: '#f4f2ec',
+    A26: '#f4f2ec',
+    A27: '#f4f2ec',
+    A28: '#f4f2ec',
+    A29: '#f4f2ec',
+    A30: '#f4f2ec',
+    A31: '#f4f2ec',
+    A32: '#f4f2ec',
+    A33: '#f4f2ec',
+    A34: '#f4f2ec',
+    A35: '#f4f2ec',
+    A36: '#f4f2ec',
+    A37: '#f4f2ec',
+    A38: '#f4f2ec',
+    A39: '#f4f2ec',
+    A40: '#f4f2ec',
+    A41: '#f4f2ec',
+    A42: '#f4f2ec',
+    A43: '#f4f2ec',
+    A44: '#bedef3',
+    A45: '#516702',
+    A46: '#516702',
+    A47: '#516702',
+    A48: '#516702',
+    A49: '#516702',
+    A50: '#abb20c'
+};
+
+// Initialize localStorage with default colors if not already set
+for (const polygonName in defaultColors) {
+    if (!localStorage.getItem(`colour${polygonName}`)) {
+        localStorage.setItem(`colour${polygonName}`, defaultColors[polygonName]);
+    }
+}
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiYnlyb25ubiIsImEiOiJjbTB2NG9qajYxOTE1Mmtwd3Q1aDd5cjM2In0.K6SRujI45VvXnG1vfcwbwA';
 
@@ -81,6 +90,11 @@ map.on('load', function() {
         }
     });
 
+    // Retrieve colors from localStorage or set to default if not available
+    const getStoredColor = (polygonName) => {
+        return localStorage.getItem(`colour${polygonName}`) || '#f4f2ec'; // Default color if not found
+    };
+
     // 2. A-grid-20241116-3 (fill)
     map.addLayer({
         id: "A-grid-20241116-3",
@@ -93,56 +107,56 @@ map.on('load', function() {
             "fill-color": [
                 "match",
                 ["get", "Name"], // get the 'Name' property from GeoJSON
-                "A1", colourA1,  // if 'Name' is 'A1', use colourA1
-                "A2", colourA2,  // if 'Name' is 'A2', use colourA2
-                "A3", colourA3,  // if 'Name' is 'A3', use colourA3
-                "A4", colourA4,  // if 'Name' is 'A4', use colourA4
-                "A5", colourA5,  // if 'Name' is 'A5', use colourA5
-                "A6", colourA6,  // if 'Name' is 'A6', use colourA6
-                "A7", colourA7,  // if 'Name' is 'A7', use colourA7
-                "A8", colourA8,  // if 'Name' is 'A8', use colourA8
-                "A9", colourA9,  // if 'Name' is 'A9', use colourA9
-                "A10", colourA10, // if 'Name' is 'A10', use colourA10
-                "A11", colourA11,
-                "A12", colourA12,
-                "A13", colourA13,
-                "A14", colourA14,
-                "A15", colourA15,
-                "A16", colourA16,
-                "A17", colourA17,
-                "A18", colourA18,
-                "A19", colourA19,
-                "A20", colourA20,
-                "A21", colourA21,
-                "A22", colourA22,
-                "A23", colourA23,
-                "A24", colourA24,
-                "A25", colourA25,
-                "A26", colourA26,
-                "A27", colourA27,
-                "A28", colourA28,
-                "A29", colourA29,
-                "A30", colourA30,
-                "A31", colourA31,
-                "A32", colourA32,
-                "A33", colourA33,
-                "A34", colourA34,
-                "A35", colourA35,
-                "A36", colourA36,
-                "A37", colourA37,
-                "A38", colourA38,
-                "A39", colourA39,
-                "A40", colourA40,
-                "A41", colourA41,
-                "A42", colourA42,
-                "A43", colourA43,
-                "A44", colourA44,
-                "A45", colourA45,
-                "A46", colourA46,
-                "A47", colourA47,
-                "A48", colourA48,
-                "A49", colourA49,
-                "A50", colourA50,
+                "A1", getStoredColor("A1"),  // if 'Name' is 'A1', use stored color
+                "A2", getStoredColor("A2"),  // if 'Name' is 'A2', use stored color
+                "A3", getStoredColor("A3"),  // if 'Name' is 'A3', use stored color
+                "A4", getStoredColor("A4"),  // if 'Name' is 'A4', use stored color
+                "A5", getStoredColor("A5"),  // if 'Name' is 'A5', use stored color
+                "A6", getStoredColor("A6"),  // if 'Name' is 'A6', use stored color
+                "A7", getStoredColor("A7"),  // if 'Name' is 'A7', use stored color
+                "A8", getStoredColor("A8"),  // if 'Name' is 'A8', use stored color
+                "A9", getStoredColor("A9"),  // if 'Name' is 'A9', use stored color
+                "A10", getStoredColor("A10"), // if 'Name' is 'A10', use stored color
+                "A11", getStoredColor("A11"),
+                "A12", getStoredColor("A12"),
+                "A13", getStoredColor("A13"),
+                "A14", getStoredColor("A14"),
+                "A15", getStoredColor("A15"),
+                "A16", getStoredColor("A16"),
+                "A17", getStoredColor("A17"),
+                "A18", getStoredColor("A18"),
+                "A19", getStoredColor("A19"),
+                "A20", getStoredColor("A20"),
+                "A21", getStoredColor("A21"),
+                "A22", getStoredColor("A22"),
+                "A23", getStoredColor("A23"),
+                "A24", getStoredColor("A24"),
+                "A25", getStoredColor("A25"),
+                "A26", getStoredColor("A26"),
+                "A27", getStoredColor("A27"),
+                "A28", getStoredColor("A28"),
+                "A29", getStoredColor("A29"),
+                "A30", getStoredColor("A30"),
+                "A31", getStoredColor("A31"),
+                "A32", getStoredColor("A32"),
+                "A33", getStoredColor("A33"),
+                "A34", getStoredColor("A34"),
+                "A35", getStoredColor("A35"),
+                "A36", getStoredColor("A36"),
+                "A37", getStoredColor("A37"),
+                "A38", getStoredColor("A38"),
+                "A39", getStoredColor("A39"),
+                "A40", getStoredColor("A40"),
+                "A41", getStoredColor("A41"),
+                "A42", getStoredColor("A42"),
+                "A43", getStoredColor("A43"),
+                "A44", getStoredColor("A44"),
+                "A45", getStoredColor("A45"),
+                "A46", getStoredColor("A46"),
+                "A47", getStoredColor("A47"),
+                "A48", getStoredColor("A48"),
+                "A49", getStoredColor("A49"),
+                "A50", getStoredColor("A50"),
                 "#c300ba" // default color if no match (fallback)
             ],
             "fill-opacity": 1,

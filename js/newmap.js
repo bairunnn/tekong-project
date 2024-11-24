@@ -107,6 +107,27 @@ function renderNewMap() {
             
             // Log the Name of the clicked polygon (for verification)
             console.log(`Polygon ${polygonName} clicked`);
+
+            const polygonNames = [
+                "A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "A10",
+                "A11", "A12", "A13", "A14", "A15", "A16", "A17", "A18", "A19", "A20",
+                "A21", "A22", "A23", "A24", "A25", "A26", "A27", "A28", "A29", "A30",
+                "A31", "A32", "A33", "A34", "A35", "A36", "A37", "A38", "A39", "A40",
+                "A41", "A42", "A43", "A44", "A45", "A46", "A47", "A48", "A49", "A50"
+            ];
+    
+            // Create an array of the colors for all polygons
+            const colorArray = polygonNames.map(polygon => {
+                return localStorage.getItem(`colour${polygon}`) || "#c300ba"; // Fallback to default color if not found
+            });
+    
+            // Update the layer with the new colors for all polygons
+            map.setPaintProperty('A-grid-20241116-3', 'fill-color', [
+                "match",
+                ["get", "Name"], // get the 'Name' property from GeoJSON
+                ...polygonNames.flatMap((polygon, index) => [polygon, colorArray[index]]), // Map polygon names to their colors
+                "#c300ba" // default color if no match (fallback)
+            ]);
         }
     });
 }
