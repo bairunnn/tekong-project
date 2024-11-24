@@ -47,11 +47,12 @@ async function handleConfirmUpload() {
         // Upload map data to Firestore
         const docRef = await addDoc(collection(db, "maps"), mapData);
 
+        // Close the modal after upload
+        $("#uploadModal .btn-close").click()
+
         // Notify the user that the map was successfully uploaded
         alert(`Map uploaded successfully! Document ID: ${docRef.id}`);
 
-        // Close the modal after upload
-        uploadModal.hide();
     } catch (error) {
         // Handle errors
         console.error("Error uploading map: ", error);
