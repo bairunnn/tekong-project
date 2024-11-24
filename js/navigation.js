@@ -20,6 +20,10 @@ function assignHomeViewListeners() {
         loadCreativeMode();          // Load the creative mode
     });
 
+    document.getElementById('hdb-image').addEventListener('click', function() {
+        alert("This interactive web app is not affiliated with the Urban Redevelopment Authority, the Housing & Development Board, nor with the Government of Singapore.\nFor legal purposes, none of the information here reflects the planning intention of the Government. Please refer to the adopted Master Plan.\nFor education only!!\nbairun@upenn.edu");
+    });
+
     // Event listeners for other buttons (if required)
     // document.getElementById('explore-ideas-btn').addEventListener('click', () => { ... });
     // document.getElementById('history-btn').addEventListener('click', () => { ... });
