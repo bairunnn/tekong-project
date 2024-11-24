@@ -46,13 +46,11 @@ function loadGalleryMode() {
     `;
 
     // Fetch titles from Firestore using the mapsData object
-    const titlesList = document.getElementById('titles-list');
-    const searchBar = document.getElementById('search-bar');
-    const mapDescription = document.getElementById('map-description'); // Element to display the description
-
     // Assuming `mapsData` is the object with map information including colors and description
     async function fetchTitles() {
         const titlesList = document.getElementById('titles-list');
+        const searchBar = document.getElementById('search-bar');
+        const mapDescription = document.getElementById('map-description');
         titlesList.innerHTML = '<li>Loading titles...</li>'; // Show loading message while fetching
 
         try {
