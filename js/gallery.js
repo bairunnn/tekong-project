@@ -16,7 +16,7 @@ function loadGalleryMode() {
             </div>
         </div>
         <h3><span style="font-size: 1.3em;">Gallery view</span></h3>
-        <p>Explore map submissions from other people here!</b></p>
+        <p>Explore map submissions from other people here!<br>Add your own map to this gallery by returning to the home page and enter creative mode.</b></p>
         
         <!-- Search Bar Section -->
         <div class="input-group mb-3" id="search-bar-container">
