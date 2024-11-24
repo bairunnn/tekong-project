@@ -99,8 +99,8 @@ html, body, #map {
 
 #explore-ideas-btn,
 #history-btn,
-#retrieve-map-btn,
-#screenshot-btn {
+#clear-canvas-btn,
+#upload-btn {
     background-color: #e6e4de; /* Custom background for the other two buttons */
     color: black; /* Default text color should be black */
     border: none; /* Remove border */
@@ -111,8 +111,8 @@ html, body, #map {
 #explore-ideas-btn:hover,
 #history-btn:hover,
 #new-map-btn:hover,
-#retrieve-map-btn:hover,
-#screenshot-btn:hover {
+#clear-canvas-btn:hover,
+#upload-btn:hover {
     background-color: #f4f2ec;
     color: black;
 }

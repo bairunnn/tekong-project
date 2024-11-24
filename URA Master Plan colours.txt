@@ -1,6 +1,7 @@
 #0b7fa2  Business park
 #215297  Commercial
 #f6bb81  Housing
+#36ade5  Housing + Commercial
 #cc0521  Hospitals
 #b10166  Industry
 #c8a5cf  Light industry

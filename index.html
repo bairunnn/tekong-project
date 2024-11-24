@@ -74,6 +74,29 @@
     <!-- GSAP JS -->
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 
+    <!-- Firebase -->
+    <!-- <script src="https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js"></script> -->
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+          apiKey: "AIzaSyDFkkX5OcKFbxAsliQGmWBlLFe6fABBSvM",
+          authDomain: "tekong-project.firebaseapp.com",
+          projectId: "tekong-project",
+          storageBucket: "tekong-project.firebasestorage.app",
+          messagingSenderId: "732158714164",
+          appId: "1:732158714164:web:3abc7d443ed6c20f5b8561"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+      </script>
+
     <!-- Scripts for different sections -->
     <script src="js/main.js"></script>
     <script src="js/map.js"></script>

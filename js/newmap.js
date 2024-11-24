@@ -17,15 +17,18 @@ function renderNewMap() {
 
     // Define the zoning categories and their corresponding colors and cursor files
     const zoningMap = {
-        "C": { name: "Commercial (offices & retail)", color: "#215297", cursor: "./assets/images/brush-palette/C.cur" },
+        "C": { name: "Retail", color: "#215297", cursor: "./assets/images/brush-palette/C.cur" },
+        "B": { name: "Office", color: "#0b7fa2", cursor: "./assets/images/brush-palette/B.cur" },
+        "W": { name: "Water", color: "#bedef3", cursor: "./assets/images/brush-palette/W.cur" },
         "E": { name: "Education", color: "#f4f2c1", cursor: "./assets/images/brush-palette/E.cur" },
         "H": { name: "Housing", color: "#f6bb81", cursor: "./assets/images/brush-palette/H.cur" },
-        "L": { name: "Light industry", color: "#c8a5cf", cursor: "./assets/images/brush-palette/L.cur" },
-        "M": { name: "Military (special uses)", color: "#516702", cursor: "./assets/images/brush-palette/M.cur" },
-        "O": { name: "Open space (forest)", color: "#abb20c", cursor: "./assets/images/brush-palette/O.cur" },
+        "M": { name: "Military", color: "#516702", cursor: "./assets/images/brush-palette/M.cur" },
         "P": { name: "Park", color: "#1ea33a", cursor: "./assets/images/brush-palette/P.cur" },
+        "O": { name: "Forest", color: "#abb20c", cursor: "./assets/images/brush-palette/O.cur" },
         "S": { name: "Sports", color: "#a3d49d", cursor: "./assets/images/brush-palette/S.cur" },
-        "W": { name: "Waterbody", color: "#bedef3", cursor: "./assets/images/brush-palette/W.cur" }
+        "K": { name: "Hospital", color: "#cc0521", cursor: "./assets/images/brush-palette/K.cur" },
+        "L": { name: "Industry", color: "#fe86ba", cursor: "./assets/images/brush-palette/L.cur" },
+        "R": { name: "Undecided", color: "#fef66d", cursor: "./assets/images/brush-palette/R.cur" }
     };
 
     // Add buttons for each zoning category
@@ -40,7 +43,7 @@ function renderNewMap() {
         button.style.border = "none"; // Remove button border
 
         // Set text color for specific zones
-        if (zone === "E" || zone === "H" || zone === "S" || zone === "W") {
+        if (zone === "E" || zone === "H" || zone === "S" || zone === "W" || zone === "R") {
             button.style.color = "#000"; // Set text color to black for E, H, S, W
         } else {
             button.style.color = "#fff"; // Default text color is white
@@ -116,7 +119,7 @@ function renderNewMap() {
                 "A41", "A42", "A43", "A44", "A45", "A46", "A47", "A48", "A49", "A50"
             ];
     
-            // Create an array of the colors for all polygons
+            // Create an array of the colors for all polygons (re-render map)
             const colorArray = polygonNames.map(polygon => {
                 return localStorage.getItem(`colour${polygon}`) || "#c300ba"; // Fallback to default color if not found
             });

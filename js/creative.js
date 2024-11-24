@@ -18,8 +18,8 @@ function loadCreativeMode() {
         <!-- Buttons Section -->
         <div class="button-container">
             <button class="btn btn-secondary d-block mb-2 w-100" id="new-map-btn">New map</button>
-            <button class="btn btn-secondary d-block mb-2 w-100" id="retrieve-map-btn">Retrieve map</button>
-            <button class="btn btn-secondary w-100" id="screenshot-btn">Save screenshot of map</button>
+            <button class="btn btn-secondary d-block mb-2 w-100" id="clear-canvas-btn">Clear canvas</button>
+            <button class="btn btn-secondary w-100" id="upload-btn">Upload map to cloud</button>
         </div>
 
         <!-- Back Icon Section -->
@@ -31,6 +31,15 @@ function loadCreativeMode() {
 
     // Add event listener for the 'New map' button
     document.getElementById("new-map-btn").addEventListener("click", renderNewMap);
+    document.getElementById("clear-canvas-btn").addEventListener("click", function() {
+        // Prompt the user for confirmation
+        const userConfirmation = confirm("Clear map canvas and start over?");
+        
+        // If the user clicks "Yes", run the clearCanvas function
+        if (userConfirmation) {
+            clearCanvas();
+        }
+    });
 
     // // Add button functionalities
     // document.getElementById('new-map-btn').addEventListener('click', () => {
@@ -98,4 +107,87 @@ function loadCreativeMode() {
         alert("You cannot spell housing without you and I...");
     });
 
+}
+
+function clearCanvas() {
+    const defaultColors = {
+        A1: '#f4f2ec',
+        A2: '#f4f2ec',
+        A3: '#f4f2ec',
+        A4: '#f4f2ec',
+        A5: '#f4f2ec',
+        A6: '#f4f2ec',
+        A7: '#f4f2ec',
+        A8: '#f4f2ec',
+        A9: '#f4f2ec',
+        A10: '#f4f2ec',
+        A11: '#f4f2ec',
+        A12: '#f4f2ec',
+        A13: '#f4f2ec',
+        A14: '#f4f2ec',
+        A15: '#f4f2ec',
+        A16: '#f4f2ec',
+        A17: '#f4f2ec',
+        A18: '#f4f2ec',
+        A19: '#f4f2ec',
+        A20: '#f4f2ec',
+        A21: '#f4f2ec',
+        A22: '#f4f2ec',
+        A23: '#f4f2ec',
+        A24: '#f4f2ec',
+        A25: '#f4f2ec',
+        A26: '#f4f2ec',
+        A27: '#f4f2ec',
+        A28: '#f4f2ec',
+        A29: '#f4f2ec',
+        A30: '#f4f2ec',
+        A31: '#f4f2ec',
+        A32: '#f4f2ec',
+        A33: '#f4f2ec',
+        A34: '#f4f2ec',
+        A35: '#f4f2ec',
+        A36: '#f4f2ec',
+        A37: '#f4f2ec',
+        A38: '#f4f2ec',
+        A39: '#f4f2ec',
+        A40: '#f4f2ec',
+        A41: '#f4f2ec',
+        A42: '#f4f2ec',
+        A43: '#f4f2ec',
+        A44: '#bedef3',
+        A45: '#516702',
+        A46: '#516702',
+        A47: '#516702',
+        A48: '#516702',
+        A49: '#516702',
+        A50: '#abb20c'
+    };
+
+    // Reset all color values in localStorage
+    for (const polygonName in defaultColors) {
+        localStorage.setItem(`colour${polygonName}`, defaultColors[polygonName]);
+    }
+
+    console.log("Canvas cleared: All polygon colors reset to default values.");
+
+    const polygonNames = [
+        "A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "A10",
+        "A11", "A12", "A13", "A14", "A15", "A16", "A17", "A18", "A19", "A20",
+        "A21", "A22", "A23", "A24", "A25", "A26", "A27", "A28", "A29", "A30",
+        "A31", "A32", "A33", "A34", "A35", "A36", "A37", "A38", "A39", "A40",
+        "A41", "A42", "A43", "A44", "A45", "A46", "A47", "A48", "A49", "A50"
+    ];
+
+    // Create an array of the colors for all polygons (re-render map)
+    const colorArray = polygonNames.map(polygon => {
+        return localStorage.getItem(`colour${polygon}`) || "#c300ba"; // Fallback to default color if not found
+    });
+
+    // Update the layer with the new colors for all polygons
+    map.setPaintProperty('A-grid-20241116-3', 'fill-color', [
+        "match",
+        ["get", "Name"], // get the 'Name' property from GeoJSON
+        ...polygonNames.flatMap((polygon, index) => [polygon, colorArray[index]]), // Map polygon names to their colors
+        "#c300ba" // default color if no match (fallback)
+    ]);
 }
