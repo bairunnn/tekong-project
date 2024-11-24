@@ -114,20 +114,3 @@ toggleBtn.addEventListener('click', () => {
 
 /* ###################################################### */
 
-// Get the modal and the buttons
-const modal = document.getElementById('uploadModal');
-const cancelButton = document.getElementById('cancel-upload-btn');
-
-// Event listener for the cancel button
-cancelButton.addEventListener('click', function() {
-    // Remove 'show' class and add 'hide' class to close the modal
-    modal.classList.remove('show');
-    modal.classList.add('hide');
-    
-    // Add a delay to actually hide the modal after the transition
-    setTimeout(() => {
-        modal.classList.remove('hide'); // Completely remove the 'hide' class
-        modal.classList.remove('show'); // Keep it hidden after fade-out
-    }, 300); // Matches the fade transition time
-});
-

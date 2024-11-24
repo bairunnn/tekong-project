@@ -1,4 +1,5 @@
 import { renderNewMap } from './newmap.js';
+import { homeView } from './default.js';
 
 // creative.js
 
