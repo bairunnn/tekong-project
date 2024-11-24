@@ -60,7 +60,7 @@ async function handleConfirmUpload() {
 }
 
 // Add event listener to the "Confirm upload" button inside the modal
-document.getElementById("confirmUpload").addEventListener("click", handleConfirmUpload);
+document.getElementById("confirm-upload-btn").addEventListener("click", handleConfirmUpload);
 
 // Export Firestore database and utility functions
 export { db };
