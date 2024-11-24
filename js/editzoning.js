@@ -1,3 +1,4 @@
+
 // Function to enable editing of zoning properties
 function enableZoningEdit(map, activeButton, zoningMap) {
     // Check if the activeButton is set
@@ -38,3 +39,5 @@ function enableZoningEdit(map, activeButton, zoningMap) {
         }
     });
 }
+
+export { enableZoningEdit };

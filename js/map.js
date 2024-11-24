@@ -1,3 +1,4 @@
+
 // May this code work
 
 const defaultColors = {
@@ -217,3 +218,4 @@ document.getElementById('reset-button').addEventListener('click', function() {
 // map.on('mousemove', () => {
 //     map.getCanvas().style.cursor = "url('../assets/images/cursor_brush.cur'), default";
 // });
+

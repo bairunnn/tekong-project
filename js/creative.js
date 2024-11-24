@@ -1,3 +1,6 @@
+import { uploadMap } from './firebase.js';
+import { renderNewMap } from './newmap.js';
+
 // creative.js
 
 // Function to populate the creative mode content
@@ -40,6 +43,10 @@ function loadCreativeMode() {
             clearCanvas();
         }
     });
+
+    // Add an event listener to the "Upload" button
+    document.getElementById("upload-btn").addEventListener("click", uploadMap);
+
 
     // // Add button functionalities
     // document.getElementById('new-map-btn').addEventListener('click', () => {
@@ -191,3 +198,5 @@ function clearCanvas() {
         "#c300ba" // default color if no match (fallback)
     ]);
 }
+
+export { loadCreativeMode, clearCanvas };

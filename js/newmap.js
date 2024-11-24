@@ -1,3 +1,4 @@
+
 let activeButton = null;  // Track the currently active button
 
 function renderNewMap() {
@@ -148,4 +149,6 @@ function darkenColor(color, percent) {
 
     return `#${Math.round(r).toString(16).padStart(2, '0')}${Math.round(g).toString(16).padStart(2, '0')}${Math.round(b).toString(16).padStart(2, '0')}`;
 }
+
+export { renderNewMap, darkenColor };  // Export the function and helper function
 

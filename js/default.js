@@ -1,3 +1,5 @@
+import { assignHomeViewListeners } from './navigation.js';
+
 // Function to load the default home view
 function homeView() {
     let contentPanel = document.getElementById('description-panel');
@@ -25,3 +27,5 @@ function homeView() {
     `;
     assignHomeViewListeners();
 }
+
+export { homeView };

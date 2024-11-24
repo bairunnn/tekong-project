@@ -1,3 +1,5 @@
+import { loadCreativeMode } from './creative.js';
+
 // navigation.js
 
 // Event listener for the "creative-mode-btn"
@@ -22,3 +24,5 @@ function assignHomeViewListeners() {
     // document.getElementById('explore-ideas-btn').addEventListener('click', () => { ... });
     // document.getElementById('history-btn').addEventListener('click', () => { ... });
 }
+
+export { assignHomeViewListeners };

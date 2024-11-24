@@ -74,34 +74,14 @@
     <!-- GSAP JS -->
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 
-    <!-- Firebase -->
-    <script type="module">
-        import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js'
-        import { getFirestore, collection, addDoc, getDocs } from 'https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js'
-      
-        // Your web app's Firebase configuration
-        const firebaseConfig = {
-          apiKey: "AIzaSyDFkkX5OcKFbxAsliQGmWBlLFe6fABBSvM",
-          authDomain: "tekong-project.firebaseapp.com",
-          projectId: "tekong-project",
-          storageBucket: "tekong-project.firebasestorage.app",
-          messagingSenderId: "732158714164",
-          appId: "1:732158714164:web:3abc7d443ed6c20f5b8561"
-        };
-      
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
-      </script>
-
     <!-- Scripts for different sections -->
-    <script src="js/main.js"></script>
+    <script type="module" src="js/main.js"></script>
     <script src="js/map.js"></script>
-    <script src="js/navigation.js"></script>
-    <script src="js/default.js"></script>
-    <script src="js/creative.js"></script>
-    <script src="js/newmap.js"></script>
-    <script src="js/editzoning.js"></script>
-    <script src="js/firebase.js"></script>
+    <script type="module" src="js/navigation.js"></script>
+    <script type="module" src="js/default.js"></script>
+    <script type="module" src="js/creative.js"></script>
+    <script type="module" src="js/newmap.js"></script>
+    <script type="module" src="js/editzoning.js"></script>
+    <script type="module" src="js/firebase.js"></script>
 </body>
 </html>
