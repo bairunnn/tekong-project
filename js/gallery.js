@@ -18,6 +18,12 @@ function loadGalleryMode() {
         <h3><span style="font-size: 1.3em;">Gallery view</span></h3>
         <p>Explore map submissions from other people here!</b></p>
         
+        <!-- Search Bar Section -->
+        <div class="input-group mb-3" id="search-bar-container">
+            <input type="text" class="form-control" placeholder="Search titles..." id="search-bar" aria-label="Search titles" aria-describedby="search-button">
+            <button class="btn btn-outline-secondary" type="button" id="search-button">Search</button>
+        </div>
+
         <!-- Scrollable Titles Section -->
         <div class="scrollable-titles-container" style="overflow-y: auto; border: 1px solid #ddd; padding: 10px; margin-bottom: 15px;">
             <ul id="titles-list" style="list-style: none; padding: 0; margin: 0;">
@@ -41,6 +47,7 @@ function loadGalleryMode() {
 
     // Fetch titles from Firestore using the mapsData object
     const titlesList = document.getElementById('titles-list');
+    const searchBar = document.getElementById('search-bar');
     const mapDescription = document.getElementById('map-description'); // Element to display the description
 
     // Assuming `mapsData` is the object with map information including colors and description
@@ -107,6 +114,8 @@ function loadGalleryMode() {
                         titlesList.appendChild(listItem);
                     }
                 });
+
+                
             }
         } catch (error) {
             console.error('Error fetching titles:', error);
