@@ -20,7 +20,7 @@ function loadGalleryMode() {
         
         <!-- Search Bar Section -->
         <div class="input-group mb-3" id="search-bar-container">
-            <input type="text" class="form-control" placeholder="Search titles..." id="search-bar" aria-label="Search titles" aria-describedby="search-button">
+            <input type="text" class="form-control" placeholder="Search for maps by title..." id="search-bar" aria-label="Search titles" aria-describedby="search-button">
             <button class="btn btn-outline-secondary" type="button" id="search-button">Search</button>
         </div>
 
@@ -34,7 +34,7 @@ function loadGalleryMode() {
         <p>Description of selected map:</p>
 
         <!-- Description Section -->
-        <div id="map-description" class="scrollable-description-container">
+        <div id="map-description" class="scrollable-description-container" style="overflow-y: auto; border: 1px solid #ddd; padding: 10px;">
             <!-- Description will be injected here -->
         </div>
 
@@ -45,12 +45,14 @@ function loadGalleryMode() {
         </div>
     `;
 
+    const titlesList = document.getElementById('titles-list');
+    const searchBar = document.getElementById('search-bar');
+    const mapDescription = document.getElementById('map-description');
+    
     // Fetch titles from Firestore using the mapsData object
     // Assuming `mapsData` is the object with map information including colors and description
-    async function fetchTitles() {
-        const titlesList = document.getElementById('titles-list');
-        const searchBar = document.getElementById('search-bar');
-        const mapDescription = document.getElementById('map-description');
+    async function fetchTitles(query = '') {
+        
         titlesList.innerHTML = '<li>Loading titles...</li>'; // Show loading message while fetching
 
         try {
@@ -62,11 +64,16 @@ function loadGalleryMode() {
 
             const mapEntries = Object.entries(mapsData); // Convert mapsData object to an array of [key, value] pairs
 
-            if (mapEntries.length === 0) {
+            // Filter maps based on search query
+            const filteredMaps = mapEntries.filter(([docId, map]) => {
+                return map.title.toLowerCase().includes(query.toLowerCase());
+            });
+
+            if (filteredMaps.length === 0) {
                 titlesList.innerHTML = '<li>No titles found.</li>';
             } else {
-                // Iterate through all the maps (from mapEntries)
-                mapEntries.forEach(([docId, map]) => {
+                // Iterate through all the maps (from filteredMaps)
+                filteredMaps.forEach(([docId, map]) => {
                     const title = map.title; // Assuming each map has a 'title' field
 
                     if (title) {
@@ -112,7 +119,6 @@ function loadGalleryMode() {
                         titlesList.appendChild(listItem);
                     }
                 });
-
                 
             }
         } catch (error) {
@@ -123,6 +129,16 @@ function loadGalleryMode() {
 
     // Call the function to load titles when needed
     fetchTitles();
+
+    // Add debounce function for search input
+    let debounceTimer;
+    searchBar.addEventListener('input', () => {
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(() => {
+            fetchTitles(searchBar.value);
+        }, 500); // Wait for 500ms after user stops typing
+    });
+
 
     // "Return to home" functionality
     document.getElementById('back-icon-section').addEventListener('click', () => {

@@ -196,11 +196,10 @@ html, body, #map {
 
 /* Scrollable Description Container */
 .scrollable-description-container {
-    height: 20%; /* Adjust this height based on your layout */
+    height: 15%; /* Adjust this height based on your layout */
     overflow-y: auto;
     border: 1px solid #ddd;
     padding: 10px;
     font-style: italic;
     color: #555;
-    margin-bottom: 15px;
 }
