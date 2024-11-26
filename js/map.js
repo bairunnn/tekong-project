@@ -175,7 +175,7 @@ map.on('load', function() {
         },
         paint: {
             "line-color": ["get", "colour"],
-            "line-width": 2,
+            "line-width": 4,
             "line-opacity": 1
         }
     });
@@ -190,8 +190,32 @@ map.on('load', function() {
         },
         paint: {
             "line-color": "#94c83d",
-            "line-width": 2,
+            "line-width": 4,
             "line-opacity": 1
+        }
+    });
+
+    // 5. Districts (circle)
+    map.addLayer({
+        id: "tekong_districts",
+        type: "symbol",
+        source: {
+            type: "geojson",
+            data: "assets/layers/tekong-districts-20241125-1.geojson"
+        },
+        minzoom: 13, // Only show at zoom level 13 and above
+        layout: {
+            "text-field": ["get", "District"], // Display the name of the district
+            "text-font": ["Barlow Bold"], 
+            "text-size": 16,
+            "text-offset": [0, 0],
+            "text-anchor": "top", // Anchor the text to the top of the symbol
+        },
+        paint: {
+            "text-color": "#000000", // Text color
+            "text-halo-color": "#ffffff", // White halo around text for readability
+            "text-halo-width": 2, // Halo width for better contrast
+            "text-opacity": 1,
         }
     });
 
