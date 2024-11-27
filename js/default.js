@@ -35,7 +35,15 @@ function homeView() {
     setLineOpacityToOne(map, 'CRL_with_extension_20241104');
     setLineOpacityToOne(map, 'MRTLines_20241113_future');
     setTextOpacityToOne(map, 'tekong_districts');
+    setRasterOpacityToZero(map, 'raster-layer');
     assignHomeViewListeners();
+
+    map.flyTo({
+      center: [104.029311, 1.388],
+      zoom: 12,
+      bearing: 0,
+      essential: true  // Ensures that the transition is smooth
+    });
 }
 
 function setLayerOpacityToOne(map, layerId) {
@@ -65,4 +73,13 @@ function setTextOpacityToOne(map, layerId) {
     }
   }
 
-export { homeView };
+function setRasterOpacityToZero(map, layerId) {
+    if (map.getLayer(layerId)) {
+      map.setPaintProperty(layerId, 'raster-opacity', 0);
+      console.log(`Layer ${layerId} opacity set to 1.`);
+    } else {
+      console.error(`Layer ${layerId} not found.`);
+    }
+  }
+
+export { homeView, setLayerOpacityToOne };

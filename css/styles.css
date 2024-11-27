@@ -215,9 +215,11 @@ html, body, #map {
 #left-arrow {
     background-color: #e6e4de; /* Custom background for "Enter creative mode" */
     border: none; /* Remove border */
+    width: 30%;
 }
 
 #right-arrow {
     background-color: #858379; /* Custom background for "Enter creative mode" */
     border: none; /* Remove border */
+    width: 30%;
 }

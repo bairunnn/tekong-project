@@ -1,7 +1,6 @@
 import { loadCreativeMode } from './creative.js';
 import { loadGalleryMode } from './gallery.js';
 import { loadStoryMode } from './storymap.js';
-import { clearCanvas } from './creative.js';
 
 // navigation.js
 
@@ -31,15 +30,19 @@ document.getElementById('history-btn').addEventListener('click', () => {
 
     // Run the function from creative.js to populate the description-panel with Creative Mode content
     loadStoryMode();
-    clearCanvas();
     setLayerOpacityToZero(map, 'A-grid-20241116-3');
     setLayerOpacityToZero(map, 'A-roads-all');
     setLineOpacityToZero(map, 'CRL_with_extension_20241104');
     setLineOpacityToZero(map, 'MRTLines_20241113_future');
     setTextOpacityToZero(map, 'tekong_districts');
+    setRasterOpacityToOne(map, 'raster-layer');
+
+    map.flyTo({
+      center: [104.03152, 1.41113],
+      zoom: 13,
+      essential: true  // Ensures that the transition is smooth
+    });
 });
-
-
 
 function assignHomeViewListeners() {
     // Event listener for the "creative-mode-btn"
@@ -62,12 +65,18 @@ function assignHomeViewListeners() {
     
         // Run the function from creative.js to populate the description-panel with Creative Mode content
         loadStoryMode();
-        clearCanvas();
         setLayerOpacityToZero(map, 'A-grid-20241116-3');
         setLayerOpacityToZero(map, 'A-roads-all');
         setLineOpacityToZero(map, 'CRL_with_extension_20241104');
         setLineOpacityToZero(map, 'MRTLines_20241113_future');
         setTextOpacityToZero(map, 'tekong_districts');
+        setRasterOpacityToOne(map, 'raster-layer');
+
+        map.flyTo({
+          center: [104.03152, 1.41113],
+          zoom: 13,
+          essential: true  // Ensures that the transition is smooth
+        });
     });
 
     document.getElementById('hdb-image').addEventListener('click', function() {
@@ -106,4 +115,13 @@ function setTextOpacityToZero(map, layerId) {
     }
   }
   
-export { assignHomeViewListeners };
+function setRasterOpacityToOne(map, layerId) {
+    if (map.getLayer(layerId)) {
+      map.setPaintProperty(layerId, 'raster-opacity', 1);
+      console.log(`Layer ${layerId} opacity set to 1.`);
+    } else {
+      console.error(`Layer ${layerId} not found.`);
+    }
+  }
+
+export { assignHomeViewListeners, setLayerOpacityToZero, setLineOpacityToZero, setTextOpacityToZero, setRasterOpacityToOne };

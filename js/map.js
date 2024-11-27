@@ -219,6 +219,20 @@ map.on('load', function() {
         }
     });
 
+    // 6. Raster
+    map.addLayer({
+        'id': 'raster-layer',
+        'type': 'raster',
+        'source': {
+            'type': 'raster',
+            'url': 'mapbox://byronnn.ci8ag6jx', // Replace with your Mapbox tileset URL
+            'tileSize': 256
+        },
+        'paint': {
+            'raster-opacity': 0
+        }
+    });
+
 });
 
 // Reset button functionality

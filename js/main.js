@@ -16,8 +16,16 @@ An overview of its structure:
 
 /* Clicking on the HDB image */
 
-document.getElementById('hdb-image').addEventListener('click', function() {
-    alert("This interactive web app is not affiliated with the Urban Redevelopment Authority, the Housing & Development Board, nor with the Government of Singapore.\nFor legal purposes, none of the information here reflects the planning intention of the Government. Please refer to the adopted Master Plan.\nFor education only!!\nbairun@upenn.edu");
+document.getElementById('hdb-image').addEventListener('click', function () {
+    alert(
+        "This interactive web app is not affiliated with the Urban Redevelopment Authority, the Housing & Development Board, nor with the Government of Singapore.\n\n" +
+        "Believing that this website is actual policy is like marrying someone based on their dating app profile.\n\n" +
+        "For legal purposes, NONE of the information here reflects the planning intention of the Government. Please refer to the adopted Master Plan instead.\n\n" +
+        "TLDR: For demonstration purposes only!\n" +
+        "bairun@upenn.edu\n\n" +
+        "Visit the MUSA website:\n" +
+        "https://www.design.upenn.edu/musa/about"
+    );
 });
 
 /* ###################################################### */
