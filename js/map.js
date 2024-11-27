@@ -175,7 +175,7 @@ map.on('load', function() {
         },
         paint: {
             "line-color": ["get", "colour"],
-            "line-width": 4,
+            "line-width": 3,
             "line-opacity": 1
         }
     });
@@ -190,7 +190,7 @@ map.on('load', function() {
         },
         paint: {
             "line-color": "#94c83d",
-            "line-width": 4,
+            "line-width": 3,
             "line-opacity": 1
         }
     });

@@ -8,10 +8,8 @@ An overview of its structure:
 - Moving the mouse to rotate the HDB image
 - Show / hide the content panel
 
-*/
+2. Function to check for mobile devices
 
-/* 
-  1. Interactions on the main landing page
 */
 
 /* ###################################################### */
@@ -114,3 +112,15 @@ toggleBtn.addEventListener('click', () => {
 
 /* ###################################################### */
 
+// Function to check for mobile devices
+function checkMobileDevice() {
+    const width = window.innerWidth;
+
+    // Check if the device is mobile (less than 768px for mobile, 768px to 1024px for tablets)
+    if (width < 768) {
+        alert("You are viewing this page on mobile. The interface is best used on tablets / laptops / desktops. Better for your eyes!");
+    }
+}
+
+// Run the check when the page loads
+window.onload = checkMobileDevice;

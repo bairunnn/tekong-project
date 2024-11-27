@@ -30,8 +30,39 @@ function homeView() {
             <button class="btn btn-secondary w-100" id="history-btn">See the history of Tekong</button>
         </div>
     `;
-    
+    setLayerOpacityToOne(map, 'A-grid-20241116-3');
+    setLayerOpacityToOne(map, 'A-roads-all');
+    setLineOpacityToOne(map, 'CRL_with_extension_20241104');
+    setLineOpacityToOne(map, 'MRTLines_20241113_future');
+    setTextOpacityToOne(map, 'tekong_districts');
     assignHomeViewListeners();
 }
+
+function setLayerOpacityToOne(map, layerId) {
+    if (map.getLayer(layerId)) {
+      map.setPaintProperty(layerId, 'fill-opacity', 1);
+      console.log(`Layer ${layerId} opacity set to 0.`);
+    } else {
+      console.error(`Layer ${layerId} not found.`);
+    }
+  }
+
+function setLineOpacityToOne(map, layerId) {
+    if (map.getLayer(layerId)) {
+      map.setPaintProperty(layerId, 'line-opacity', 1);
+      console.log(`Layer ${layerId} opacity set to 0.`);
+    } else {
+      console.error(`Layer ${layerId} not found.`);
+    }
+  }
+
+function setTextOpacityToOne(map, layerId) {
+    if (map.getLayer(layerId)) {
+      map.setPaintProperty(layerId, 'text-opacity', 1);
+      console.log(`Layer ${layerId} opacity set to 0.`);
+    } else {
+      console.error(`Layer ${layerId} not found.`);
+    }
+  }
 
 export { homeView };
