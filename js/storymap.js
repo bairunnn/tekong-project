@@ -11,7 +11,7 @@ const chapters = [
         <p>Explore Tekong’s evolution from a quiet secluded settlement to its current reclaimed state.</p>
         <p>Use the <b>navigation buttons</b> above to navigate between chapters.</p>
         <div class="storymap-image-container">
-        <img src="../assets/images/storymap-images/0-nas.png" alt="National Archives Singapore" />
+        <img src="../assets/images/storymap-images/0-nas.webp" alt="National Archives Singapore" />
         </div>
       `,
       zoom: 13,
@@ -24,11 +24,11 @@ const chapters = [
         <p>Prior to independence, Tekong had a population of around 4,000 people, a mix of ethnic Chinese and Malay residents. Villagers tended to rubber and coconut trees, grew fruits and vegetables, reared prawns and fish.</p>
         <p>At that period, Tekong housed a few kampongs: Kampong Pahang, Kampong Selabin (Pekan), Kampong Seminal, Kampong Batu Koyok, Kampong Senyunkong, Kampong Pasir, Kampong Sungei Belang, Kampong Onom, Kampong Pasir Merah, and Kampong Permatang.</p>
         <div class="storymap-image-container">
-        <img src="../assets/images/storymap-images/1-permatang.png" alt="A Malay house at Kampong Permatang, Pulau Tekong, 1979" />
+        <img src="../assets/images/storymap-images/1-permatang.webp" alt="A Malay house at Kampong Permatang, Pulau Tekong, 1979" />
         </div>
         <p><i>A Malay house at Kampong Permatang, Pulau Tekong, 1979<br>Source: National Archives of Singapore</i> <br><a onclick="window.open(this.href,'_blank');return false;" href="https://www.nas.gov.sg/archivesonline/photographs/record-details/e744183e-1161-11e3-83d5-0050568939ad">View source</a></p>
         <div class="storymap-image-container">
-        <img src="../assets/images/storymap-images/1-fish.png" alt="A fish farm off the coast of Tekong, 1986" />
+        <img src="../assets/images/storymap-images/1-fish.webp" alt="A fish farm off the coast of Tekong, 1986" />
         </div>
         <p><i>A fish farm off the coast of Tekong, 1986<br>Source: National Archives of Singapore</i> <br><a onclick="window.open(this.href,'_blank');return false;" href="https://www.nas.gov.sg/archivesonline/photographs/record-details/f5e5c8b0-1161-11e3-83d5-0050568939ad">View source</a></p>
       `,
@@ -43,7 +43,7 @@ const chapters = [
         <p>Another theory goes that the earliest settlers on Tekong were from <b>Pahang</b> who first arrived in 1857 before the outbreak of a civil war in Teluk Tekong — their native land. A key area affected by the war was a district called Teluk Tekong. The refugees then named their new home Pulau Tekong in memory of their previous homes. This is a compelling theory given that one of the more central Kampongs in Tekong was called “Kampong Pahang” (pictured in the map).</p>
         <p>Turning to linguistics, tekong in Malay refers to a deep cleft in a giant rock that collects water from rain and dew on the island. As for Indonesian, tekong means something that is not straight or wavy.</p>
         <div class="storymap-image-container">
-        <img src="../assets/images/storymap-images/2-boat.png" alt="A boat departing from Tekong, 1986" />
+        <img src="../assets/images/storymap-images/2-boat.webp" alt="A boat departing from Tekong, 1986" />
         </div>
         <p><i>A boat departing from Tekong, 1986<br>Source: National Archives of Singapore</i> <br><a onclick="window.open(this.href,'_blank');return false;" href="https://www.nas.gov.sg/archivesonline/photographs/record-details/f601cca4-1161-11e3-83d5-0050568939ad">View source</a></p>
       `,
@@ -55,11 +55,11 @@ const chapters = [
       content: `
         <p>Beginning in <b>1986</b>, residents on Tekong began to be resettled onto mainland Singapore, kickstarting the period where our armed forces take full control over the island. The relocation process was facilitated by the Housing & Development Board and the Singapore Armed Forces.</p>
         <div class="storymap-image-container">
-        <img src="../assets/images/storymap-images/3-resettlement-notice.png" alt="A relocation notice for Pulau Tekong Tai Yang Gong Temple at Kampong Permatang" />
+        <img src="../assets/images/storymap-images/3-resettlement-notice.webp" alt="A relocation notice for Pulau Tekong Tai Yang Gong Temple at Kampong Permatang" />
         </div>
         <p><i>A relocation notice for Pulau Tekong Tai Yang Gong Temple at Kampong Permatang<br>Source: National Archives of Singapore</i> <br><a onclick="window.open(this.href,'_blank');return false;" href="https://www.nas.gov.sg/archivesonline/photographs/record-details/d69dd2dd-1161-11e3-83d5-0050568939ad" ;">View source</a></p>
         <div class="storymap-image-container">
-        <img src="../assets/images/storymap-images/3-resettlement-army.png" alt="Army trucks assisting with the resettlement programme, 1986" />
+        <img src="../assets/images/storymap-images/3-resettlement-army.webp" alt="Army trucks assisting with the resettlement programme, 1986" />
         </div>
         <p><i>Army trucks assisting with the resettlement programme, 1986<br>Source: National Archives of Singapore</i> <br><a onclick="window.open(this.href,'_blank');return false;" href="https://www.nas.gov.sg/archivesonline/photographs/record-details/f6025aa0-1161-11e3-83d5-0050568939ad" ;">View source</a></p>
       `,
@@ -72,11 +72,11 @@ const chapters = [
         <p>From the late 1980s till today, the entirety of the island is used for military training. As pictured in the map, what once were kampongs were replaced by military infrastructure. For example, the former Kampong Batu Koyok has become the present-day Basic Military Training Centre (BMTC) School 4 (Rocky Hill Camp).</p>
         <p>The Maritime & Port Authority estimates that about <b>4,000 military personnel</b> cross between mainland Singapore and Tekong each day. Peak periods will see as much as 8,000 people make the journey each day.</p>
         <div class="storymap-image-container">
-        <img src="../assets/images/storymap-images/4-president-old.png" alt="Then-president Wee Kim Wee arriving at the Infantry Training Depot in Tekong, 1987" />
+        <img src="../assets/images/storymap-images/4-president-old.webp" alt="Then-president Wee Kim Wee arriving at the Infantry Training Depot in Tekong, 1987" />
         </div>
         <p><i>Then-president Wee Kim Wee arriving at the Infantry Training Depot in Tekong, 1987<br>Source: National Archives of Singapore</i> <br><a onclick="window.open(this.href,'_blank');return false;" href="https://www.nas.gov.sg/archivesonline/photographs/record-details/fadeefdf-1161-11e3-83d5-0050568939ad">View source</a></p>
         <div class="storymap-image-container">
-        <img src="../assets/images/storymap-images/4-president-new.png" alt="Then-president Halimah Yacob arriving at the Basic Military Training Centre in Tekong, 2018" />
+        <img src="../assets/images/storymap-images/4-president-new.webp" alt="Then-president Halimah Yacob arriving at the Basic Military Training Centre in Tekong, 2018" />
         </div>
         <p><i>Then-president Halimah Yacob arriving at the Basic Military Training Centre in Tekong, 2018<br>Source: National Archives of Singapore</i> <br><a onclick="window.open(this.href,'_blank');return false;" href="https://www.nas.gov.sg/archivesonline/photographs/record-details/0c4807cb-5fa7-11eb-b519-005056a7c31c">View source</a></p>
       `,
@@ -88,11 +88,11 @@ const chapters = [
       content: `
         <p>At present, the Ministry for National Development is constructing <b>polders</b> all around Tekong to expand its land area. In each polder, land is below sea level and is protected by dike walls. It is the same underlying technology / principle that built up the Netherlands since the 12th century (as much as 20% being polder land).</p>
         <div class="storymap-image-container">
-        <img src="../assets/images/storymap-images/5-progress.png" alt="Status of land reclamation in northern part of Tekong, 2022" />
+        <img src="../assets/images/storymap-images/5-progress.webp" alt="Status of land reclamation in northern part of Tekong, 2022" />
         </div>
         <p><i>Source: Straits Times</i> <br><a onclick="window.open(this.href,'_blank');return false;" href="https://www.straitstimes.com/singapore/pulau-tekong-polder-project-more-than-halfway-complete-to-finish-by-end-2024">View source</a></p>
         <div class="storymap-image-container">
-        <img src="../assets/images/storymap-images/5-graphic.png" alt="Description of land reclamation in Tekong" />
+        <img src="../assets/images/storymap-images/5-graphic.webp" alt="Description of land reclamation in Tekong" />
         </div>
         <p><i>Source: Straits Times</i> <br><a onclick="window.open(this.href,'_blank');return false;" href="https://www.straitstimes.com/singapore/pulau-tekong-polder-project-more-than-halfway-complete-to-finish-by-end-2024">View source</a></p>
       `,
@@ -106,7 +106,7 @@ const chapters = [
         <p>Given our small land area, it is important to keep large plots of our land reserved for future generations to decide their usage, when present-day demand is sufficiently met.</p>
         <p>What do you wish to see in the future of places like Tekong? Return to the home page and submit your ideas, or speak to a planner at one of the URA’s heartlands exhibitions today!</p>
         <div class="storymap-image-container">
-        <img src="../assets/images/storymap-images/6-zoning.png" alt="Master Plan 2019" />
+        <img src="../assets/images/storymap-images/6-zoning.webp" alt="Master Plan 2019" />
         </div>
         <p><i>The zoning of Tekong in the Master Plan, 2024<br>Source: URA SPACE</i> <br><a onclick="window.open(this.href,'_blank');return false;" href="https://www.ura.gov.sg/maps/">View source</a></p>
         <p>For additional information, these resources are really helpful:</p>
