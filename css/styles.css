@@ -5,6 +5,7 @@ Main interface CSS
 - body
 - content-panel
 - #map
+- hyperlinks
 
 Description bar CSS
 - image-container (for HDB logo)
@@ -73,6 +74,15 @@ html, body, #map {
 .floating-button:hover {
     background-color: #cccccc; /* Change color on hover */
 }
+
+a {
+    color: #65635c; /* Set font color */
+    text-decoration: underline; /* Underline the link */
+  }
+  
+  a:hover {
+    color: #b5ab86; /* Optional: Ensure the color remains the same when hovering */
+  }
 
 /* ###################################################### */
 
@@ -222,4 +232,22 @@ html, body, #map {
     background-color: #858379; /* Custom background for "Enter creative mode" */
     border: none; /* Remove border */
     width: 30%;
+}
+
+#chapter-content {
+    width: 100%;
+}
+
+.storymap-image-container {
+    width: 100%;          /* Make the container take the full width of the parent (chapter-content) */
+    display: flex;        /* Center the image horizontally */
+    justify-content: left;
+    margin-top: 20px;     /* Add some spacing if needed */
+    margin-bottom: 20px;  /* Add some spacing if needed */
+}
+
+.storymap-image-container img {
+    width: 100%;           /* Set image to 80% of the container's width */
+    max-width: 100%;      /* Prevent the image from exceeding the container width */
+    height: auto;         /* Maintain aspect ratio */
 }

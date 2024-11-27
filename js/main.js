@@ -10,6 +10,7 @@ An overview of its structure:
 
 2. Function to check for mobile devices
 
+
 */
 
 /* ###################################################### */
@@ -132,3 +133,10 @@ function checkMobileDevice() {
 
 // Run the check when the page loads
 window.onload = checkMobileDevice;
+
+
+document.querySelectorAll('a[target="_blank"]').forEach(link => {
+    link.addEventListener('click', event => {
+      window.open(link.href, '_blank');
+    });
+  });

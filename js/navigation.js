@@ -38,7 +38,7 @@ document.getElementById('history-btn').addEventListener('click', () => {
     setRasterOpacityToOne(map, 'raster-layer');
 
     map.flyTo({
-      center: [104.03152, 1.41113],
+      center: [104.03152, 1.412],
       zoom: 13,
       essential: true  // Ensures that the transition is smooth
     });
@@ -73,7 +73,7 @@ function assignHomeViewListeners() {
         setRasterOpacityToOne(map, 'raster-layer');
 
         map.flyTo({
-          center: [104.03152, 1.41113],
+          center: [104.03152, 1.412],
           zoom: 13,
           essential: true  // Ensures that the transition is smooth
         });
