@@ -57,19 +57,19 @@ const chapters = [
         <div class="storymap-image-container">
         <img src="./assets/images/storymap-images/3-resettlement-notice.webp" alt="A relocation notice for Pulau Tekong Tai Yang Gong Temple at Kampong Permatang" />
         </div>
-        <p><i>A relocation notice for Pulau Tekong Tai Yang Gong Temple at Kampong Permatang<br>Source: National Archives of Singapore</i> <br><a onclick="window.open(this.href,'_blank');return false;" href="https://www.nas.gov.sg/archivesonline/photographs/record-details/d69dd2dd-1161-11e3-83d5-0050568939ad" ;">View source</a></p>
+        <p><i>A relocation notice for Pulau Tekong Tai Yang Gong Temple at <b>Kampong Permatang</b> (as zoomed in the map)<br>Source: National Archives of Singapore</i> <br><a onclick="window.open(this.href,'_blank');return false;" href="https://www.nas.gov.sg/archivesonline/photographs/record-details/d69dd2dd-1161-11e3-83d5-0050568939ad" ;">View source</a></p>
         <div class="storymap-image-container">
         <img src="./assets/images/storymap-images/3-resettlement-army.webp" alt="Army trucks assisting with the resettlement programme, 1986" />
         </div>
         <p><i>Army trucks assisting with the resettlement programme, 1986<br>Source: National Archives of Singapore</i> <br><a onclick="window.open(this.href,'_blank');return false;" href="https://www.nas.gov.sg/archivesonline/photographs/record-details/f6025aa0-1161-11e3-83d5-0050568939ad" ;">View source</a></p>
       `,
-      zoom: 13,
-      center: [104.03152, 1.412]
+      zoom: 15,
+      center: [104.04012, 1.42408]
     },
     {
       title: "Chapter 4:<br>Military island",
       content: `
-        <p>From the late 1980s till today, the entirety of the island is used for military training. As pictured in the map, what once were kampongs were replaced by military infrastructure. For example, the former Kampong Batu Koyok has become the present-day Basic Military Training Centre (BMTC) School 4 (Rocky Hill Camp).</p>
+        <p>From the late 1980s till today, the entirety of the island is used for military training. As pictured in the map, what once were kampongs were replaced by military infrastructure. For example, the former <b>Kampong Batu Koyok</b> has become the present-day Basic Military Training Centre (BMTC) School 4 (Rocky Hill Camp).</p>
         <p>The Maritime & Port Authority estimates that about <b>4,000 military personnel</b> cross between mainland Singapore and Tekong each day. Peak periods will see as much as 8,000 people make the journey each day.</p>
         <div class="storymap-image-container">
         <img src="./assets/images/storymap-images/4-president-old.webp" alt="Then-president Wee Kim Wee arriving at the Infantry Training Depot in Tekong, 1987" />
@@ -86,6 +86,10 @@ const chapters = [
     {
       title: "Chapter 5:<br>Expansion",
       content: `
+        <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" role="switch" id="toggleMRT" />
+        <label class="form-check-label" for="toggleMRT">Compare Tekong before & after</label>
+        </div>
         <p>At present, the Ministry for National Development is constructing <b>polders</b> all around Tekong to expand its land area. In each polder, land is below sea level and is protected by dike walls. It is the same underlying technology / principle that built up the Netherlands since the 12th century (as much as 20% being polder land).</p>
         <div class="storymap-image-container">
         <img src="./assets/images/storymap-images/5-progress.webp" alt="Status of land reclamation in northern part of Tekong, 2022" />
@@ -102,6 +106,10 @@ const chapters = [
     {
       title: "Chapter 6:<br>The future",
       content: `
+        <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" role="switch" id="toggleMRT" />
+        <label class="form-check-label" for="toggleMRT">Compare Tekong before & after</label>
+        </div>
         <p>While the armed forces train on Tekong today, the future of Tekong may look very different from now. Based on the adopted Master Plan at the Ministry of National Development, <b>the bulk of Tekong is zoned as “reserve” land</b>, meaning that future land uses are undecided. In other words, the present-day military use is very much an interim use of space. Given the high economic costs of land reclamation, one could well hazard a guess that the future of Tekong is an urban one, with value-generating land uses that may recoup the land reclamation costs many times over.</p>
         <p>Given our small land area, it is important to keep large plots of our land reserved for future generations to decide their usage, when present-day demand is sufficiently met.</p>
         <p>What do you wish to see in the future of places like Tekong? Return to the home page and submit your ideas, or speak to a planner at one of the URA’s heartlands exhibitions today!</p>
@@ -113,7 +121,6 @@ const chapters = [
         <p><i>National Library</i> <br><a onclick="window.open(this.href,'_blank');return false;" href="https://www.nlb.gov.sg/main/article-detail?cmsuuid=559afee6-67a2-4222-9ec4-a1b4b7aa4d63">Tekong infopedia</a></p>
         <p><i>National Archives</i> <br><a onclick="window.open(this.href,'_blank');return false;" href="https://www.nas.gov.sg/archivesonline/maps_building_plans/record-details/fabc9bbe-115c-11e3-83d5-0050568939ad">Old maps of Singapore</a></p>
         <p><i>National Library</i> <br><a onclick="window.open(this.href,'_blank');return false;" href="https://remembersingapore.org/2012/04/04/from-villages-to-flats-part-1/">Remember Singapore</a></p>
-
       `,
       zoom: 13,
       center: [104.03152, 1.412]
@@ -190,5 +197,18 @@ function navigateRight() {
     }
     updateChapter();
   }
+
+// Add an event listener for the toggle switch
+document.addEventListener('change', (event) => {
+  if (event.target && event.target.id === 'toggleMRT') {
+    const isChecked = event.target.checked;
+
+    // Assuming your raster layers are named "raster-layer-0" and "raster-layer-1"
+    const rasterLayerId = 'raster-layer'; // Change this if necessary
+
+    // Adjust raster opacity based on toggle state
+    map.setPaintProperty(rasterLayerId, 'raster-opacity', isChecked ? 0 : 1);
+  }
+});
 
 export { loadStoryMode };

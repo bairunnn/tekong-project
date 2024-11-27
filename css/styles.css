@@ -24,6 +24,7 @@ Gallery mode CSS
 
 Story mode CSS
 - left and right buttons
+- form check
 
 */
 
@@ -250,4 +251,15 @@ a {
     width: 100%;           /* Set image to 80% of the container's width */
     max-width: 100%;      /* Prevent the image from exceeding the container width */
     height: auto;         /* Maintain aspect ratio */
+}
+
+.form-check.form-switch {
+    border-bottom: 2px solid #ded9ca; /* Light gray color for the border */
+    padding-bottom: 10px; /* Add some padding for spacing */
+    margin-bottom: 15px; /* Add margin to separate from the dropdown */
+}
+
+.form-check-input:checked {
+    background-color: #a5a296; /* Custom color when checked */
+    border-color: #a5a296; /* Custom border color */
 }
