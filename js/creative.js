@@ -3,7 +3,6 @@ import { homeView } from './default.js';
 
 // creative.js
 
-// Function to populate the creative mode content
 function loadCreativeMode() {
     let contentPanel = document.getElementById('description-panel');
     contentPanel.innerHTML = `
@@ -32,14 +31,12 @@ function loadCreativeMode() {
         </div>
     `;
 
-    // Add event listener for the 'New map' button
     document.getElementById("new-map-btn").addEventListener("click", function() {
         renderNewMap();
         clearCanvas();
     });
     
     document.getElementById("clear-canvas-btn").addEventListener("click", function() {
-        // Prompt the user for confirmation
         const userConfirmation = confirm("Clear map canvas and start over?");
         
         // If the user clicks "Yes", run the clearCanvas function
@@ -64,21 +61,16 @@ function loadCreativeMode() {
         brushIcon.style.transform = 'scale(1)'; // Return to normal size
     });
 
-    // Mouse move event to rotate the brush icon based on mouse position
     function handleMouseMoveCreative(event) {
-        // Get the viewport dimensions
         const viewportWidth = window.innerWidth;
         const viewportHeight = window.innerHeight;
 
-        // Calculate the center of the viewport
         const centerX = viewportWidth / 2;
         const centerY = viewportHeight / 2;
 
-        // Get the mouse position
         const mouseX = event.clientX;
         const mouseY = event.clientY;
 
-        // Calculate the angle based on the mouse position
         const deltaX = mouseX - centerX;
         const deltaY = mouseY - centerY;
         const angle = Math.atan2(deltaY, deltaX) * (45 / Math.PI) / 10; // Convert to degrees
@@ -91,17 +83,15 @@ function loadCreativeMode() {
         });
     }
 
-    // Attach mousemove event listener for brush icon rotation
     window.addEventListener("mousemove", handleMouseMoveCreative);
 
     // "Return to home" functionality
     document.getElementById('back-icon-section').addEventListener('click', () => {
-        // Clear and load the default view
         homeView();
     });
 
     brushIcon.addEventListener('click', () => {
-        alert("You cannot spell housing without you and I...");
+        alert("You cannot spell housing without U and I");
     });
 }
 
@@ -182,7 +172,7 @@ function clearCanvas() {
     // Update the layer with the new colors for all polygons
     map.setPaintProperty('A-grid-20241116-3', 'fill-color', [
         "match",
-        ["get", "Name"], // get the 'Name' property from GeoJSON
+        ["get", "Name"],
         ...polygonNames.flatMap((polygon, index) => [polygon, colorArray[index]]), // Map polygon names to their colors
         "#c300ba" // default color if no match (fallback)
     ]);

@@ -1,9 +1,7 @@
-// import { renderNewMap } from './newmap.js';
-import { homeView } from './default.js';
-import { getAllMaps } from './firebase.js';
-
 // gallery.js
 
+import { homeView } from './default.js';
+import { getAllMaps } from './firebase.js';
 
 function loadGalleryMode() {
     let contentPanel = document.getElementById('description-panel');
@@ -50,7 +48,6 @@ function loadGalleryMode() {
     const mapDescription = document.getElementById('map-description');
     
     // Fetch titles from Firestore using the mapsData object
-    // Assuming `mapsData` is the object with map information including colors and description
     async function fetchTitles(query = '') {
         
         titlesList.innerHTML = '<li>Loading titles...</li>'; // Show loading message while fetching
@@ -87,13 +84,11 @@ function loadGalleryMode() {
                         listItem.addEventListener('click', () => {
                             console.log(`Title clicked: ${title}`);
                         
-                            // Display the description of the selected map
                             mapDescription.innerHTML = map.description || 'No description available for this map.';
                         
                             // Override localStorage with colors from the selected map
                             const mapColors = map.colors; // Assuming `colors` is an object like { A1: '#color', A2: '#color', ... }
                         
-                            // Iterate over the keys (A1, A2, ...) and update localStorage
                             for (let i = 1; i <= 50; i++) {
                                 const polygonKey = `A${i}`;
                                 if (mapColors[polygonKey]) {
@@ -102,7 +97,6 @@ function loadGalleryMode() {
                                 }
                             }
                         
-                            // Optionally log the updated localStorage to verify
                             console.log('Updated colors in localStorage:');
                             for (let i = 1; i <= 50; i++) {
                                 const polygonKey = `A${i}`;
@@ -141,7 +135,6 @@ function loadGalleryMode() {
 
     // "Return to home" functionality
     document.getElementById('back-icon-section').addEventListener('click', () => {
-        // Clear and load the default view
         homeView();
     });
 
@@ -155,21 +148,16 @@ function loadGalleryMode() {
         paletteLogo.style.transform = 'scale(1)'; // Return to normal size
     });
 
-    // Mouse move event to rotate the brush icon based on mouse position
     function handleMouseMoveGallery(event) {
-        // Get the viewport dimensions
         const viewportWidth = window.innerWidth;
         const viewportHeight = window.innerHeight;
 
-        // Calculate the center of the viewport
         const centerX = viewportWidth / 2;
         const centerY = viewportHeight / 2;
 
-        // Get the mouse position
         const mouseX = event.clientX;
         const mouseY = event.clientY;
 
-        // Calculate the angle based on the mouse position
         const deltaX = mouseX - centerX;
         const deltaY = mouseY - centerY;
         const angle = Math.atan2(deltaY, deltaX) * (45 / Math.PI) / 10; // Convert to degrees
@@ -182,14 +170,12 @@ function loadGalleryMode() {
         });
     }
 
-    // Attach mousemove event listener for brush icon rotation
     window.addEventListener("mousemove", handleMouseMoveGallery);
 
 }
 
 function renderMapLayer() {
-    // Assuming you have a reference to the Mapbox map instance as `map`
-    const polygonsLayer = 'A-grid-20241116-3'; // The layer you want to update
+    const polygonsLayer = 'A-grid-20241116-3';
 
     // Iterate over the polygons in the layer and update their colors based on localStorage
     map.setPaintProperty(polygonsLayer, 'fill-color', [
@@ -209,11 +195,11 @@ function highlightSelectedRow(selectedRow) {
     
     // Remove highlight from all rows
     rows.forEach(row => {
-        row.style.backgroundColor = ''; // Reset background color
+        row.style.backgroundColor = ''; 
     });
 
     // Highlight the selected row
-    selectedRow.style.backgroundColor = '#e6e4de'; // Highlight the selected row
+    selectedRow.style.backgroundColor = '#e6e4de'; 
 }
 
 export { loadGalleryMode };

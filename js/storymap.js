@@ -1,6 +1,5 @@
 import { homeView } from './default.js';
 
-// Global variable to keep track of the current chapter
 let currentChapter = 1;
 
 const chapters = [
@@ -127,7 +126,6 @@ const chapters = [
     }
   ];
 
-// Function to populate the storymap content
 function loadStoryMode() {
   let contentPanel = document.getElementById('description-panel');
   contentPanel.innerHTML = `
@@ -198,15 +196,12 @@ function navigateRight() {
     updateChapter();
   }
 
-// Add an event listener for the toggle switch
 document.addEventListener('change', (event) => {
   if (event.target && event.target.id === 'toggleMRT') {
     const isChecked = event.target.checked;
 
-    // Assuming your raster layers are named "raster-layer-0" and "raster-layer-1"
-    const rasterLayerId = 'raster-layer'; // Change this if necessary
+    const rasterLayerId = 'raster-layer'; 
 
-    // Adjust raster opacity based on toggle state
     map.setPaintProperty(rasterLayerId, 'raster-opacity', isChecked ? 0 : 1);
   }
 });

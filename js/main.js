@@ -34,24 +34,19 @@ document.getElementById('hdb-image').addEventListener('click', function () {
 /* Moving the mouse to rotate the HDB image */
 
 function handleMouseMove(event) {
-    // Get the viewport dimensions
     const viewportWidth = window.innerWidth;
     const viewportHeight = window.innerHeight;
 
-    // Calculate the center of the viewport
     const centerX = viewportWidth / 2;
     const centerY = viewportHeight / 2;
 
-    // Get the mouse position
     const mouseX = event.clientX;
     const mouseY = event.clientY;
 
-    // Calculate the angle based on the mouse position
     const deltaX = mouseX - centerX;
     const deltaY = mouseY - centerY;
     const angle = Math.atan2(deltaY, deltaX) * (45 / Math.PI) / 10; // Convert to degrees
 
-    // Use GSAP to animate the rotation of the hdb-image
     gsap.to("#hdb-image", {
         rotation: angle,
         duration: 0.3,
@@ -59,7 +54,6 @@ function handleMouseMove(event) {
     });
 }
 
-// Attach mousemove event listener
 window.addEventListener("mousemove", handleMouseMove);
 
 
@@ -75,12 +69,10 @@ const toggleBtn = document.getElementById('toggle-panel-btn');
 // Initial state
 let isPanelVisible = true;
 
-// Enable Bootstrap tooltips for the toggle button
 $(document).ready(function () {
     $('#toggle-panel-btn').tooltip({ placement: 'right' }); // Initialize tooltip
 });
 
-// Event listener for the toggle button
 toggleBtn.addEventListener('click', () => {
     if (isPanelVisible) {
         // Hide content panel
@@ -131,9 +123,7 @@ function checkMobileDevice() {
     }
 }
 
-// Run the check when the page loads
 window.onload = checkMobileDevice;
-
 
 document.querySelectorAll('a[target="_blank"]').forEach(link => {
     link.addEventListener('click', event => {

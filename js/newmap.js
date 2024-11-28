@@ -1,3 +1,5 @@
+// newmap.js
+
 let activeButton = null;  // Track the currently active button
 
 function renderNewMap() {
@@ -136,7 +138,6 @@ function renderNewMap() {
     });
 }
 
-// Helper function to darken a color by a percentage (e.g., 20%)
 function darkenColor(color, percent) {
     let colorHex = color.replace("#", "");
     let r = parseInt(colorHex.substring(0, 2), 16);
@@ -150,5 +151,5 @@ function darkenColor(color, percent) {
     return `#${Math.round(r).toString(16).padStart(2, '0')}${Math.round(g).toString(16).padStart(2, '0')}${Math.round(b).toString(16).padStart(2, '0')}`;
 }
 
-export { renderNewMap, darkenColor };  // Export the function and helper function
+export { renderNewMap, darkenColor }; 
 

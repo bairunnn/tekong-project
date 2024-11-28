@@ -1,5 +1,4 @@
-
-// May this code work
+// map.js
 
 const defaultColors = {
     A1: '#f4f2ec',
@@ -74,7 +73,6 @@ var map = new mapboxgl.Map({
 var nav = new mapboxgl.NavigationControl();
 map.addControl(nav, 'top-right');
 
-// Initialize all layers with opacity set to 0
 map.on('load', function() {
 
     // 1. A-roads-all.geojson (fill)
@@ -244,7 +242,6 @@ document.getElementById('reset-button').addEventListener('click', function() {
         essential: true
     });
 });
-
 
 // // Access the Mapbox map container
 // const mapContainer = document.getElementById('map');

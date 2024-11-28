@@ -1,34 +1,30 @@
+// navigation.js
+
 import { loadCreativeMode } from './creative.js';
 import { loadGalleryMode } from './gallery.js';
 import { loadStoryMode } from './storymap.js';
 
-// navigation.js
-
-// Event listener for the "creative-mode-btn"
 document.getElementById('creative-mode-btn').addEventListener('click', () => {
     // Clear the content of the description-panel
     let contentPanel = document.getElementById('description-panel');
-    contentPanel.innerHTML = '';  // This clears the current content
+    contentPanel.innerHTML = '';  
 
-    // Run the function from creative.js to populate the description-panel with Creative Mode content
     loadCreativeMode();
 });
 
 document.getElementById('explore-ideas-btn').addEventListener('click', () => {
     // Clear the content of the description-panel
     let contentPanel = document.getElementById('description-panel');
-    contentPanel.innerHTML = '';  // This clears the current content
+    contentPanel.innerHTML = '';  
 
-    // Run the function from creative.js to populate the description-panel with Creative Mode content
     loadGalleryMode();
 });
 
 document.getElementById('history-btn').addEventListener('click', () => {
     // Clear the content of the description-panel
     let contentPanel = document.getElementById('description-panel');
-    contentPanel.innerHTML = '';  // This clears the current content
+    contentPanel.innerHTML = '';  
 
-    // Run the function from creative.js to populate the description-panel with Creative Mode content
     loadStoryMode();
     setLayerOpacityToZero(map, 'A-grid-20241116-3');
     setLayerOpacityToZero(map, 'A-roads-all');
@@ -45,25 +41,22 @@ document.getElementById('history-btn').addEventListener('click', () => {
 });
 
 function assignHomeViewListeners() {
-    // Event listener for the "creative-mode-btn"
     document.getElementById('creative-mode-btn').addEventListener('click', () => {
         let contentPanel = document.getElementById('description-panel');
-        contentPanel.innerHTML = ''; // Clear the current content
-        loadCreativeMode();          // Load the creative mode
+        contentPanel.innerHTML = ''; 
+        loadCreativeMode();          
     });
 
     document.getElementById('explore-ideas-btn').addEventListener('click', () => {
         let contentPanel = document.getElementById('description-panel');
-        contentPanel.innerHTML = '';  // This clears the current content
+        contentPanel.innerHTML = '';  
         loadGalleryMode();
     });
 
     document.getElementById('history-btn').addEventListener('click', () => {
-        // Clear the content of the description-panel
         let contentPanel = document.getElementById('description-panel');
-        contentPanel.innerHTML = '';  // This clears the current content
+        contentPanel.innerHTML = '';  
     
-        // Run the function from creative.js to populate the description-panel with Creative Mode content
         loadStoryMode();
         setLayerOpacityToZero(map, 'A-grid-20241116-3');
         setLayerOpacityToZero(map, 'A-roads-all');
@@ -79,13 +72,17 @@ function assignHomeViewListeners() {
         });
     });
 
-    document.getElementById('hdb-image').addEventListener('click', function() {
-        alert("This interactive web app is not affiliated with the Urban Redevelopment Authority, the Housing & Development Board, nor with the Government of Singapore.\nFor legal purposes, none of the information here reflects the planning intention of the Government. Please refer to the adopted Master Plan.\nFor education only!!\nbairun@upenn.edu");
+    document.getElementById('hdb-image').addEventListener('click', function () {
+        alert(
+            "This interactive web app is not affiliated with the Urban Redevelopment Authority, the Housing & Development Board, nor with the Government of Singapore.\n\n" +
+            "Believing that this website is actual policy is like marrying someone based on their dating app profile.\n\n" +
+            "For legal purposes, NONE of the information here reflects the planning intention of the Government. Please refer to the adopted Master Plan instead.\n\n" +
+            "TLDR: For demonstration only!\n" +
+            "bairun@upenn.edu\n\n" +
+            "Visit the MUSA website:\n" +
+            "https://www.design.upenn.edu/musa/about"
+        );
     });
-
-    // Event listeners for other buttons (if required)
-    // document.getElementById('explore-ideas-btn').addEventListener('click', () => { ... });
-    // document.getElementById('history-btn').addEventListener('click', () => { ... });
 }
 
 function setLayerOpacityToZero(map, layerId) {
