@@ -210,7 +210,7 @@ a {
 
 /* Scrollable Description Container */
 .scrollable-description-container {
-    height: 15%; /* Adjust this height based on your layout */
+    height: 23%; /* Adjust this height based on your layout */
     overflow-y: auto;
     border: 1px solid #ddd;
     padding: 10px;

@@ -28,12 +28,15 @@ function loadGalleryMode() {
                 <li>Loading titles...</li>
             </ul>
         </div>
-
         <p>Description of selected map:</p>
 
         <!-- Description Section -->
         <div id="map-description" class="scrollable-description-container" style="overflow-y: auto; border: 1px solid #ddd; padding: 10px;">
-            <!-- Description will be injected here -->
+            <!-- Select a submission to see its description! -->
+        </div>
+
+        <div id="expandable-description">
+        <p style="color: #a5a296; text-decoration: underline;">View full description</p>
         </div>
 
         <!-- Back Icon Section -->
@@ -41,6 +44,13 @@ function loadGalleryMode() {
             <i class="bi bi-arrow-left-circle-fill" style="font-size: 1.5em; cursor: pointer; margin-right: 10px;"></i>
             <span style="font-size: 1.1em; cursor: pointer;" id="return-home">Return to home</span>
         </div>
+
+        <!-- Modal Section -->
+        <div id="description-modal" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: #fefcf6; padding: 20px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); z-index: 1000; max-height: 80%; width: 50%; overflow-y: auto;">
+            <span id="close-modal" style="cursor: pointer; font-weight: bold; float: right;">&times;</span>
+            <div id="modal-content"></div>
+        </div>
+        <div id="modal-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.4); z-index: 999;"></div>
     `;
 
     const titlesList = document.getElementById('titles-list');
@@ -84,7 +94,12 @@ function loadGalleryMode() {
                         listItem.addEventListener('click', () => {
                             console.log(`Title clicked: ${title}`);
                         
-                            mapDescription.innerHTML = map.description || 'No description available for this map.';
+                            // Update description and author in mapDescription
+                            mapDescription.innerHTML = `
+                                Map created by: ${map.author || 'No author specified.'}
+                                <br><br>
+                                ${map.description ? map.description.replace(/\n/g, '<br>') : 'No description available for this map.'}
+                            `;
                         
                             // Override localStorage with colors from the selected map
                             const mapColors = map.colors; // Assuming `colors` is an object like { A1: '#color', A2: '#color', ... }
@@ -171,6 +186,49 @@ function loadGalleryMode() {
     }
 
     window.addEventListener("mousemove", handleMouseMoveGallery);
+
+    // document.getElementById('expandable-description').addEventListener('click', () => {
+    //     const currentDescription = mapDescription.innerHTML; // Assuming mapDescription already holds the selected map's description
+    //     alert(currentDescription);
+    // });
+
+    document.getElementById('expandable-description').addEventListener('click', () => {
+        const toggleBtn = document.getElementById('toggle-panel-btn');
+        const currentDescription = mapDescription.innerHTML; // Get the current description
+    
+        // Get modal elements
+        const modal = document.getElementById('description-modal');
+        const modalContent = document.getElementById('modal-content');
+        const modalOverlay = document.getElementById('modal-overlay');
+    
+        // Hide the toggle button
+        toggleBtn.style.visibility = 'hidden';
+    
+        // Set the modal content
+        modalContent.innerHTML = currentDescription;
+    
+        // Show the modal and overlay
+        modal.style.display = 'block';
+        modalOverlay.style.display = 'block';
+    
+        // Close the modal when clicking the close button or the overlay
+        document.getElementById('close-modal').addEventListener('click', () => {
+            modal.style.display = 'none';
+            modalOverlay.style.display = 'none';
+    
+            // Show the toggle button again
+            toggleBtn.style.visibility = 'visible';
+
+        });
+    
+        modalOverlay.addEventListener('click', () => {
+            modal.style.display = 'none';
+            modalOverlay.style.display = 'none';
+    
+            // Show the toggle button again
+            toggleBtn.style.visibility = 'visible';
+        });
+    });
 
 }
 

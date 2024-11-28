@@ -49,7 +49,8 @@ async function handleConfirmUpload() {
         // Close the modal after upload
         $("#uploadModal .btn-close").click()
 
-        alert(`Map uploaded successfully! Document ID: ${docRef.id}`);
+        alert(`Map uploaded successfully! Check back at the gallery page to view your map & other maps. Upload ID: ${docRef.id}`);
+        // alert(`Map uploaded successfully! Unique ID: ${docRef.id}`);
 
     } catch (error) {
         console.error("Error uploading map: ", error);
