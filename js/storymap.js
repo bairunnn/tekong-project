@@ -164,6 +164,17 @@ function loadStoryMode() {
   document.getElementById('right-arrow').addEventListener('click', () => {
       navigateRight();
   });
+
+  document.addEventListener('keydown', (event) => {
+      switch (event.key) {
+          case 'ArrowRight': // Right arrow key
+              navigateRight();
+              break;
+          case 'ArrowLeft': // Left arrow key
+              navigateLeft();
+              break;
+      }
+  });
 }
 
 function updateChapter() {
